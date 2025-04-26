@@ -1,0 +1,248 @@
+﻿@model MasterPice.Models.ViewModels.CheckoutViewModel
+@* @section Styles { *@
+@*     <style> *@
+@*         .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { *@
+@*             max-width: 100% !important; *@
+@*             /* padding-right: var(--bs-gutter-x, .75rem); */ *@
+@*             /* padding-left: var(--bs-gutter-x, .75rem); */ *@
+@*             padding: 5px; *@
+@*             margin-right: auto; *@
+@*             margin-left: auto; *@
+@*         } *@
+@*     </style> *@
+@* } *@
+<body class="rbt-header-sticky">
+
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Start Side Vav -->
+    <div class="rbt-cart-side-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="title">
+                        <h4 class="title mb--0">Your shopping cart</h4>
+                    </div>
+                    <div class="rbt-btn-close" id="btn_sideNavClose">
+                        <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+            <nav class="side-nav w-100">
+                <ul class="rbt-minicart-wrapper">
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/1.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Miracle Morning</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$22</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/7.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Happy Strong</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$30</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/3.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Rich Dad Poor Dad</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$50</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/4.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Momentum Theorem</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$50</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="rbt-minicart-footer">
+                <hr class="mb--0">
+                <div class="rbt-cart-subttotal">
+                    <p class="subtotal"><strong>Subtotal:</strong></p>
+                    <p class="price">$121</p>
+                </div>
+                <hr class="mb--0">
+                <div class="rbt-minicart-bottom mt--20">
+                    <div class="view-cart-btn">
+                        <a class="rbt-btn btn-border icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">View Cart</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                    <div class="checkout-btn mt--20">
+                        <a class="rbt-btn btn-gradient icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">Checkout</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Side Vav -->
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <!-- Start breadcrumb Area -->
+    <div class="rbt-breadcrumb-default ptb--100 ptb_md--50 ptb_sm--30 bg-gradient-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-inner text-center">
+                        <h2 class="title">Checkout</h2>
+                        <ul class="page-list">
+                            <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                            <li>
+                                <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                            </li>
+                            <li class="rbt-breadcrumb-item active">Checkout</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <div class="checkout_area bg-color-white rbt-section-gap">
+        <div class="container">
+            <div class="row g-5 checkout-form">
+
+                <div class="col-lg-7">
+                    <form asp-action="Checkout" method="post">
+                        <div class="checkout-content-wrapper">
+
+                            <!-- Billing Address -->
+                            <div id="billing-form">
+                                <h4 class="checkout-title">Billing Address</h4>
+
+                                <div class="row">
+
+                                    <div class="col-md-6 col-12 mb--20">
+                                        <label>FullName*</label>
+                                        <input type="text" asp-for="Payment.FullName" placeholder="Full name">
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb--20">
+                                        <label>Email Address*</label>
+                                        <input type="email" asp-for="Payment.Email" placeholder="Email Address">
+                                    </div>
+
+                                    <div class="col-md-6 col-12 mb--20">
+                                        <label>Phone no*</label>
+                                        <input type="text" asp-for="Payment.PhoneNumber" placeholder="Phone number">
+                                    </div>
+
+                                    <div class="col-12 mb--20">
+                                        <label>Address*</label>
+                                        <input type="text" asp-for="Payment.Address"  placeholder="Address line 1">
+                                    </div>
+                                    <div class="single-method">
+                                        <input type="radio" asp-for="Payment.PaymentMethod" id="payment_card" value="card" />
+                                        <label for="payment_card">Credit Card</label>
+                                        <p data-method="check">
+                                            Please send a Check to Store name with
+                                            Store Street, Store Town, Store State, Store Postcode,
+                                            Store Country.
+                                        </p>
+                                    </div>
+
+                                </div>
+                                <div class="plceholder-button mt--50">
+                                    <button type="submit" class="rbt-btn btn-gradient hover-icon-reverse">
+                                        <span class="icon-reverse-wrapper">
+                                            <span class="btn-text">Place order</span>
+                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        </span>
+                                    </button>
+                                </div>
+                                @TempData["suuceesPay"]
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-5">
+                    <div class="row pl--50 pl_md--0 pl_sm--0">
+                        <div class="col-12 mb--60">
+
+                            <h4 class="checkout-title">Cart Total</h4>
+
+                            <div class="checkout-cart-total">
+
+                                <h4>Product <span>Total</span></h4>
+                                @foreach(var s in Model.Courses){
+                                    <ul>
+                                        <li>@s.Title<span>@s.Price</span></li>
+                                    </ul>
+                                }
+                                <h4 class="mt--30">Grand Total <span>@ViewBag.coursecountprice</span></h4>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+</body>

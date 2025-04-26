@@ -1,0 +1,42 @@
+﻿@model MasterPice.Models.ViewModels.LessonViewModel
+@{
+    Layout = "~/Views/Shared/Lesson.cshtml";
+}
+
+@section Styles {
+    <style>
+        .rbt-lesson-rightsidebar .inner {
+            padding: 0px 0;
+        }
+    </style>
+}
+
+<div class="rbt-lesson-area bg-color-white">
+    <div class="rbt-lesson-content-wrapper">
+
+        <div class="rbt-lesson-rightsidebar overflow-hidden">
+            <div class="inner">
+                @if (Model.SelectedContent != null)
+                {
+                    <div class="content">
+                        <h3>@Model.SelectedContent.Title</h3>
+                        <p>@Model.SelectedContent.Description</p>
+                        <p><strong>Requirements:</strong> @Model.SelectedContent.Requirement</p>
+
+                        <div class="video-container mt-4">
+                            <iframe width="100%" height="400" src="@Model.SelectedContent.ContentText" frameborder="0"
+                                    allowfullscreen></iframe>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="content">
+                        <h3>Choose a lesson to start</h3>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>

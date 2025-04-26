@@ -1,0 +1,348 @@
+﻿
+@{
+    ViewData["Title"] = "Student_profile";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@* @section Styles { *@
+@*     <style> *@
+@*         .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { *@
+@*             max-width: 100% !important; *@
+@*             /* padding-right: var(--bs-gutter-x, .75rem); */ *@
+@*             /* padding-left: var(--bs-gutter-x, .75rem); */ *@
+@*             padding: 5px; *@
+@*             margin-right: auto; *@
+@*             margin-left: auto; *@
+@*         } *@
+@*     </style> *@
+@* } *@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from rainbowit.net/html/histudy/student-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Mar 2025 12:58:31 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Student Profile - Online Courses & Education Bootstrap5 Template</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/favicon.png">
+
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/assets/css/vendor/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/sal.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/feather.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/fontawesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/euclid-circulara.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/swiper.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/odometer.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/animation.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/magnigy-popup.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/plyr.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/jodit.min.css">
+
+    <link rel="stylesheet" href="~/assets/css/styles.css">
+</head>
+
+<body>
+
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Start Side Vav -->
+    <div class="rbt-cart-side-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="title">
+                        <h4 class="title mb--0">Your shopping cart</h4>
+                    </div>
+                    <div class="rbt-btn-close" id="btn_sideNavClose">   
+                        <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="rbt-minicart-footer">
+                <hr class="mb--0">
+                <div class="rbt-cart-subttotal">
+                    <p class="subtotal"><strong>Subtotal:</strong></p>
+                    <p class="price">$121</p>
+                </div>
+                <hr class="mb--0">
+                <div class="rbt-minicart-bottom mt--20">
+                    <div class="view-cart-btn">
+                        <a class="rbt-btn btn-border icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">View Cart</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                    <div class="checkout-btn mt--20">
+                        <a class="rbt-btn btn-gradient icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">Checkout</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Side Vav -->
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+    </div>
+
+    <!-- Start Card Style -->
+    <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Start Dashboard Top  -->
+                    <div class="rbt-dashboard-content-wrapper">
+                        <div class="bg_image height-350" style="background-image: url('@Context.Session.GetString("cover")');"></div>
+                        <!-- Start Tutor Information  -->
+                        <div class="rbt-tutor-information">
+                            <div class="rbt-tutor-information-left">
+                                <div class="thumbnail rbt-avatars size-lg">
+                                    <img src="@Context.Session.GetString("profile")" alt="Instructor">
+                                </div>
+                                <div class="tutor-content">
+                                    <h5 class="title">@Context.Session.GetString("name")</h5>
+                                    <ul class="rbt-meta rbt-meta-white mt--5">
+                                        <li><i class="feather-book"></i>5 Courses Enroled</li>
+                                        <li><i class="feather-award"></i>4 Certificate</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="rbt-tutor-information-right">
+                                <div class="tutor-btn">
+                                    @if (Context.Session.GetString("isTeacher") == null)
+                                    {
+                                        <a class="rbt-btn btn-md hover-icon-reverse" asp-action="Become_Teacher" asp-controller="GuestFlow">
+                                            <span class="icon-reverse-wrapper">
+                                                <span class="btn-text">Become an Instructor</span>
+                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
+                                    }
+                                    else if (Context.Session.GetString("isTeacher") == "yes")
+                                    {
+                                        <a class="rbt-btn btn-md hover-icon-reverse" asp-action="Create_courses" asp-controller="Instructor" asp-route-id="@Context.Session.GetInt32("teacherid")">
+                                            <span class="icon-reverse-wrapper">
+                                                <span class="btn-text">CreateCourses</span>
+                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                            </span>
+                                        </a>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Dashboard Top  -->
+
+                    <div class="row g-5">
+                        <div class="col-lg-3">
+                            <!-- Start Dashboard Sidebar  -->
+                            <div class="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
+                                <div class="inner">
+                                    <div class="content-item-content">
+
+                                        <div class="rbt-default-sidebar-wrapper">
+                                            <div class="section-title mb--20">
+                                                <h6 class="rbt-title-style-2">Welcome,@Context.Session.GetString("name")</h6>
+                                            </div>
+                                            <nav class="mainmenu-nav">
+                                                <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+                                                    <li><a asp-action="Student_dashboard" asp-controller="Student" class="feather-home"></i><span>Dashboard</span></a></li>
+                                                    <li><a asp-action="Student_profile"><i class="feather-user"></i><span>My Profile</span></a></li>
+                                                    <li><a asp-action="Student_enrolled_courses" asp-controller="Student"><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
+                                                    @* <li><a href="student-wishlist.html"><i class="feather-bookmark"></i><span>Wishlist</span></a></li> *@
+                                                    @* <li><a href="student-reviews.html"><i class="feather-star"></i><span>Reviews</span></a></li> *@
+                                                    <li><a href="student-my-quiz-attempts.html"><i class="feather-help-circle"></i><span>My Quiz Attempts</span></a></li>
+                                                    @* <li><a href="student-order-history.html"><i class="feather-shopping-bag"></i><span>Order History</span></a></li> *@
+                                                </ul>
+                                            </nav>
+
+                                            <div class="section-title mt--40 mb--20">
+                                                <h6 class="rbt-title-style-2">User</h6>
+                                            </div>
+                                            <nav class="mainmenu-nav">
+                                                <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+                                                    <li><a asp-action="Student_settings" asp-controller="Student"><i class="feather-settings"></i><span>Settings</span></a></li>
+                                                    <li><a asp-action="Logout" asp-controller="GuestFlow"><i class="feather-log-out"></i><span>Logout</span></a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Dashboard Sidebar  -->
+                        </div>
+                        <div class="col-lg-9">
+                            <!-- Start Instructor Profile  -->
+                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
+                                <div class="content">
+                                    <div class="section-title">
+                                        <h4 class="rbt-title-style-3">My Profile</h4>
+                                    </div>
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Registration Date</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">@Context.Session.GetString("date")</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    @* <div class="rbt-profile-row row row--15 mt--15"> *@
+                                    @*     <div class="col-lg-4 col-md-4"> *@
+                                    @*         <div class="rbt-profile-content b2">First Name</div> *@
+                                    @*     </div> *@
+                                    @*     <div class="col-lg-8 col-md-8"> *@
+                                    @*         <div class="rbt-profile-content b2">Emily</div> *@
+                                    @*     </div> *@
+                                    @* </div> *@
+                                    @* <!-- End Profile Row  --> *@
+                                    @* <!-- Start Profile Row  --> *@
+                                    @* <div class="rbt-profile-row row row--15 mt--15"> *@
+                                    @*     <div class="col-lg-4 col-md-4"> *@
+                                    @*         <div class="rbt-profile-content b2">Last Name</div> *@
+                                    @*     </div> *@
+                                    @*     <div class="col-lg-8 col-md-8"> *@
+                                    @*         <div class="rbt-profile-content b2">Hannah</div> *@
+                                    @*     </div> *@
+                                    @* </div> *@
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Username</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">@Context.Session.GetString("name")</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Email</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">@Context.Session.GetString("email")</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    @* <div class="rbt-profile-row row row--15 mt--15"> *@
+                                    @*     <div class="col-lg-4 col-md-4"> *@
+                                    @*         <div class="rbt-profile-content b2">Phone Number</div> *@
+                                    @*     </div> *@
+                                    @*     <div class="col-lg-8 col-md-8"> *@
+                                    @*         <div class="rbt-profile-content b2">+1-202-555-0174</div> *@
+                                    @*     </div> *@
+                                    @* </div> *@
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <div class="rbt-profile-row row row--15 mt--15">
+                                        <div class="col-lg-4 col-md-4">
+                                            <div class="rbt-profile-content b2">Skill/Occupation</div>
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <div class="rbt-profile-content b2">@Context.Session.GetString("interests")</div>
+                                        </div>
+                                    </div>
+                                    <!-- End Profile Row  -->
+                                    <!-- Start Profile Row  -->
+                                    <!-- End Profile Row  -->
+                                </div>
+                            </div>
+                            <!-- End Instructor Profile  -->
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Style -->
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+
+    <!-- JS
+    ============================================ -->
+    <!-- Modernizer JS -->
+    <script src="~/assets/js/vendor/modernizr.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="~/assets/js/vendor/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/assets/js/vendor/bootstrap.min.js"></script>
+    <!-- sal.js -->
+    <script src="~/assets/js/vendor/sal.js"></script>
+    <!-- Dark Mode Switcher -->
+    <script src="~/assets/js/vendor/js.cookie.js"></script>
+    <script src="~/assets/js/vendor/jquery.style.switcher.js"></script>
+    <script src="~/assets/js/vendor/swiper.js"></script>
+    <script src="~/assets/js/vendor/jquery-appear.js"></script>
+    <script src="~/assets/js/vendor/odometer.js"></script>
+    <script src="~/assets/js/vendor/backtotop.js"></script>
+    <script src="~/assets/js/vendor/isotop.js"></script>
+    <script src="~/assets/js/vendor/imageloaded.js"></script>
+
+    <script src="~/assets/js/vendor/wow.js"></script>
+    <script src="~/assets/js/vendor/waypoint.min.js"></script>
+    <script src="~/assets/js/vendor/easypie.js"></script>
+    <script src="~/assets/js/vendor/text-type.js"></script>
+    <script src="~/assets/js/vendor/jquery-one-page-nav.js"></script>
+    <script src="~/assets/js/vendor/bootstrap-select.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-ui.js"></script>
+    <script src="~/assets/js/vendor/magnify-popup.min.js"></script>
+    <script src="~/assets/js/vendor/paralax-scroll.js"></script>
+    <script src="~/assets/js/vendor/paralax.min.js"></script>
+    <script src="~/assets/js/vendor/countdown.js"></script>
+    <script src="~/assets/js/vendor/plyr.js"></script>
+    <script src="~/assets/js/vendor/jodit.min.js"></script>
+    <script src="~/assets/js/vendor/Sortable.min.js"></script>
+
+
+
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+</body>
+
+
+<!-- Mirrored from rainbowit.net/html/histudy/student-profile.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Mar 2025 12:58:31 GMT -->
+</html>
+

@@ -1,0 +1,155 @@
+﻿@model FeedBack
+@* @section Styles{ *@
+@*     <style> *@
+@*         .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { *@
+@*             max-width: 100% !important; *@
+@*             /* padding-right: var(--bs-gutter-x, .75rem); */ *@
+@*             /* padding-left: var(--bs-gutter-x, .75rem); */ *@
+@*             padding: 5px; *@
+@*             margin-right: auto; *@
+@*             margin-left: auto; *@
+@*         } *@
+@*     </style> *@
+@* } *@
+<body class="rbt-header-sticky">
+
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Side Vav -->
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <div class="rbt-conatct-area bg-gradient-11 rbt-section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center mb--60">
+                        <span class="subtitle bg-secondary-opacity">Contact Us</span>
+                        <h2 class="title">EdSpark Course Contact <br> can join with us.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5">
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate" data-sal="slide-up" data-sal-delay="150" data-sal-duration="800">
+                    <div class="rbt-address">
+                        <div class="icon">
+                            <i class="feather-headphones"></i>
+                        </div>
+                        <div class="inner">
+                            <h4 class="title">Contact Phone Number</h4>
+                            <p><a href="tel:+444555666777">+962 776264297</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate" data-sal="slide-up" data-sal-delay="200" data-sal-duration="800">
+                    <div class="rbt-address">
+                        <div class="icon">
+                            <i class="feather-mail"></i>
+                        </div>
+                        <div class="inner">
+                            <h4 class="title">Our Email Address</h4>
+                            <p><a href="mailto:habeeb.alafeef22@gmail.com">habeeb.alafeef22@gmail.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-6 col-12 sal-animate" data-sal="slide-up" data-sal-delay="250" data-sal-duration="800">
+                    <div class="rbt-address">
+                        <div class="icon">
+                            <i class="feather-map-pin"></i>
+                        </div>
+                        <div class="inner">
+                            <h4 class="title">Our Location</h4>
+                            <p>Jordan - Jerash QausAlnaser street</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rbt-contact-address">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="thumbnail">
+                        <img class="w-100 radius-6" src="~/assets/images/about/contact.jpg" alt="Contact Images">
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="rbt-contact-form contact-form-style-1 max-width-auto">
+                        <div class="section-title text-start">
+                            <span class="subtitle bg-primary-opacity">EDUCATION FOR EVERYONE</span>
+                        </div>
+                        <h3 class="title">Get a Free Course You Can Contact With Me</h3>
+                        @* <form id="contact-form" method="post" class="rainbow-dynamic-form max-width-auto" asp-action="Contact" asp-controller="GuestFlow"> *@
+                        @*     <div class="form-group"> *@
+                        @*         <input asp-for="Username" id="contact-name" type="text"> *@
+                        @*         <label>Name</label> *@
+                        @*         <span class="focus-border"></span> *@
+                        @*     </div> *@
+                        @*     <div class="form-group"> *@
+                        @*         <input  asp-for="Email" type="email"> *@
+                        @*         <label>Email</label> *@
+                        @*         <span class="focus-border"></span> *@
+                        @*     </div> *@
+                        @*      <div class="form-group"> *@
+                        @*         <textarea asp-for="FeedbackContent" id="contact-message"></textarea> *@
+                        @*         <label>Message</label>  *@
+                        @*          <span class="focus-border"></span>  *@
+                        @*      </div>  *@
+                        @*     <div class="form-submit-group"> *@
+                        @*         <button  type="submit" id="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100"> *@
+                        @*             <span class="icon-reverse-wrapper"> *@
+                        @*                 <span class="btn-text">Share your opinion</span> *@
+                        @*                 <span class="btn-icon"><i class="feather-arrow-right"></i></span> *@
+                        @*                 <span class="btn-icon"><i class="feather-arrow-right"></i></span> *@
+                        @*             </span> *@
+                        @*         </button> *@
+                        @*     </div> *@
+                        @* </form> *@
+                        <form asp-action="Contact" asp-controller="GuestFlow" method="post">
+                            <div class="form-group">
+                                <input asp-for="Email" type="email">
+                                <label>Email</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="form-group">
+                                <input asp-for="Username" id="contact-name" type="text">
+                                <label>Name</label>
+                                <span class="focus-border"></span>
+                            </div>
+                            <div class="form-group">
+                                <textarea asp-for="FeedbackContent" id="contact-message"></textarea>
+                                <label>Message</label>
+                                <span class="focus-border"></span>
+                            </div>
+                                     <button  type="submit" id="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100"> 
+                                         <span class="icon-reverse-wrapper"> 
+                                             <span class="btn-text">Share your opinion</span> 
+                                             <span class="btn-icon"><i class="feather-arrow-right"></i></span> 
+                                             <span class="btn-icon"><i class="feather-arrow-right"></i></span> 
+                                         </span> 
+                                     </button> 
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="rbt-google-map bg-color-white rbt-section-gapTop">
+        <iframe class="w-100" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3363.003769649328!2d35.845277564653806!3d32.55274464257735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151c7715f2c2e7ab%3A0x51755840c8ddbefd!2sOrange%20Digital%20Village%20Irbid!5e0!3m2!1sen!2sjo!4v1744024286060!5m2!1sen!2sjo" height="600" style="border:0"></iframe>
+    </div>
+</body>

@@ -1,0 +1,265 @@
+﻿@model List<Course>
+@* @section Styles { *@
+@*     <style> *@
+@*         .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { *@
+@*             max-width: 100% !important; *@
+@*             /* padding-right: var(--bs-gutter-x, .75rem); */ *@
+@*             /* padding-left: var(--bs-gutter-x, .75rem); */ *@
+@*             padding: 5px; *@
+@*             margin-right: auto; *@
+@*             margin-left: auto; *@
+@*         } *@
+@*     </style> *@
+@* } *@
+<body>
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- Start Side Vav -->
+    <div class="rbt-cart-side-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="title">
+                        <h4 class="title mb--0">Your shopping cart</h4>
+                    </div>
+                    <div class="rbt-btn-close" id="btn_sideNavClose">
+                        <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+            <nav class="side-nav w-100">
+                <ul class="rbt-minicart-wrapper">
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/1.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Miracle Morning</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$22</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/7.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Happy Strong</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$30</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/3.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Rich Dad Poor Dad</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$50</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/4.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Momentum Theorem</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$50</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="rbt-minicart-footer">
+                <hr class="mb--0">
+                <div class="rbt-cart-subttotal">
+                    <p class="subtotal"><strong>Subtotal:</strong></p>
+                    <p class="price">$121</p>
+                </div>
+                <hr class="mb--0">
+                <div class="rbt-minicart-bottom mt--20">
+                    <div class="view-cart-btn">
+                        <a class="rbt-btn btn-border icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">View Cart</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                    <div class="checkout-btn mt--20">
+                        <a class="rbt-btn btn-gradient icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">Checkout</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Side Vav -->
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+    </div>
+    <!-- Start Card Style -->
+    <div class="rbt-dashboard-area rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Start Dashboard Top  -->
+                    <div class="row g-5">
+                        <div class="col-lg-3">
+                            <!-- Start Dashboard Sidebar  -->
+                            <div class="rbt-default-sidebar sticky-top rbt-shadow-box rbt-gradient-border">
+                                <div class="inner">
+                                    <div class="content-item-content">
+
+                                        <div class="rbt-default-sidebar-wrapper">
+                                            <div class="section-title mb--20">
+                                                <h6 class="rbt-title-style-2">Welcome, Jone Due</h6>
+                                            </div>
+                                            <nav class="mainmenu-nav">
+                                                <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+                                                    <li><a asp-action="Admin_Dashboard" asp-controller="Admin" class="feather-home"></i><span>Dashboard</span></a></li>
+                                                    <li><a asp-action="SeeAllCourses" asp-controller="Admin"><i class="feather-book-open"></i><span>See All Courses</span></a></li>
+                                                    <li><a asp-action="Seeusers" asp-controller="Admin"><i class="feather-user"></i><span>See All Users</span></a></li>
+                                                    <li><a asp-action="SeeAllInstructor" asp-controller="Admin" class="feather-bookmark"></i><span>See All Instractors</span></a></li>
+                                                    @* <li><a href="student-reviews.html"><i class="feather-star"></i><span>Reviews</span></a></li> *@
+                                                    <li><a asp-action="statusInstructors" asp-controller="Admin"><i class="feather-help-circle"></i><span>Become Teachers Requests</span></a></li>
+                                                    <li><a asp-action="Accept_courses" asp-controller="Admin"><i class="feather-help-circle"></i><span>Course_Request</span></a></li>
+                                                </ul>
+                                            </nav>
+
+                                            <div class="section-title mt--40 mb--20">
+                                                <h6 class="rbt-title-style-2">User</h6>
+                                            </div>
+                                            <nav class="mainmenu-nav">
+                                                <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+                                                    <li><a href="instructor-settings.html"><i class="feather-settings"></i><span>Settings</span></a></li>
+                                                    <li><a asp-action="Logout" asp-controller="Admin"><i class="feather-log-out"></i><span>Logout</span></a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Dashboard Sidebar  -->
+                        </div>
+
+                        <div class="col-lg-9">
+                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60">
+                                <div class="content">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="section-title">
+                                                <h4 class="rbt-title-style-3">Courses_Requests</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row gy-5">
+                                        <div class="col-lg-12">
+                                            <div class="rbt-dashboard-table table-responsive">
+                                                <table class="rbt-table table table-borderless">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Course_id</th>
+                                                            <th>Course_title</th>
+                                                            <th>Teacher ID</th>
+                                                            <th>Denied</th>
+                                                            <th>Accept</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach (var s in Model)
+                                                        {
+                                                            <tr>
+                                                                <td>@s.CourseId</td>
+                                                                <td>@s.Title</td>
+                                                                <td>@s.TeacherId</td>
+                                                                <td>
+                                                                    <div class="rbt-card-bottom">
+                                                                        <form asp-action="DeniedCourse" method="post" onsubmit="return confirm('Are you sure you want to delete this course?');">
+                                                                            <input type="hidden" name="id" value="@s.CourseId" />
+                                                                            <button type="submit" class="rbt-btn btn-sm bg-danger w-100 text-center">
+                                                                                Denied
+                                                                            </button>
+                                                                        </form>
+                                                                    </div>
+                                                                </td>
+                                                                <td>
+																	<div class="rbt-card-bottom">
+                                                                        <form asp-action="ApproveCourse" method="post" onsubmit="return confirm('Are you sure you want to accept this course?');">
+																			<input type="hidden" name="id" value="@s.CourseId" />
+																			<button type="submit" class="rbt-btn btn-sm bg-success w-100 text-center">
+																				Accept
+																			</button>
+																		</form>
+																	</div>
+                                                                </td>
+                                                            </tr>
+                                                        }
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Card Style -->
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+</body>
+
+
+<!-- Mirrored from rainbowit.net/html/histudy/instructor-dashboard.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Mar 2025 12:58:27 GMT -->
+</html>

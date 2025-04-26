@@ -1,0 +1,596 @@
+﻿@model Tuple<List<Course>, List<Category>>
+<body class="rbt-header-sticky">
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <div class="rbt-page-banner-wrapper">
+        <!-- Start Banner BG Image  -->
+        <div class="rbt-banner-image"></div>
+        <!-- End Banner BG Image  -->
+        <div class="rbt-banner-content">
+
+            <!-- Start Banner Content Top  -->
+            <div class="rbt-banner-content-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Start Breadcrumb Area  -->
+                            <ul class="page-list">
+                                <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li>
+                                    <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                                </li>
+                                <li class="rbt-breadcrumb-item active">All Courses</li>
+                            </ul>
+                            <!-- End Breadcrumb Area  -->
+
+                            <div class=" title-wrapper">
+                                <h1 class="title mb--0">All Courses</h1>
+                                <a href="#" class="rbt-badge-2">
+                                    <div class="image">🎉</div> @ViewBag.coursesCount Courses
+                                </a>
+                            </div>
+
+                            <p class="description">Courses that help beginner designers become true unicorns. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Banner Content Top  -->
+            <!-- Start Course Top  -->
+            <div class="rbt-course-top-wrapper mt--40">
+                <div class="container">
+                    <div class="row g-5 align-items-center">
+
+                        <div class="col-lg-5 col-md-12">
+                            <div class="rbt-sorting-list d-flex flex-wrap align-items-center">
+                                <div class="rbt-short-item switch-layout-container">
+                                    <ul class="course-switch-layout">
+                                        <li class="course-switch-item"><button class="rbt-grid-view active" title="Grid Layout"><i class="feather-grid"></i> <span class="text">Grid</span></button></li>
+                                        <li class="course-switch-item"><button class="rbt-list-view" title="List Layout"><i class="feather-list"></i> <span class="text">List</span></button></li>
+                                    </ul>
+                                </div>
+                                <div class="rbt-short-item">
+                                    <span class="course-index">Showing 1-9 of 19 results</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-12">
+                            <div class="rbt-sorting-list d-flex flex-wrap align-items-end justify-content-start justify-content-lg-end">
+                                <div class="rbt-short-item">
+                                    <div class="filter-select">
+                                        <span class="select-label d-block">Short By</span>
+                                        <div class="filter-select rbt-modern-select search-by-category">
+                                            <select data-size="7">
+                                                <option>Default</option>
+                                                <option>Latest</option>
+                                                <option>Popularity</option>
+                                                <option>Trending</option>
+                                                <option>Price: low to high</option>
+                                                <option>Price: high to low</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mt--60">
+                            <ul class="rbt-portfolio-filter filter-tab-button justify-content-start nav nav-tabs" id="rbt-myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="@(ViewBag.SelectedCategory == "All" ? "active" : "")"
+                                            id="all-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#all"
+                                            type="button"
+                                            role="tab"
+                                            aria-controls="all"
+                                            aria-selected="@(ViewBag.SelectedCategory == "All" ? "true" : "false")">
+                                        <span class="filter-text">All Course</span>
+                                        <span class="course-number"> 0 @ViewBag.coursesCount</span>
+                                    </button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="@(ViewBag.SelectedCategory == "Cybersecurity" ? "active" : "")"
+                                            id="featured-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#featured"
+                                            type="button"
+                                            role="tab"
+                                            aria-controls="featured"
+                                            aria-selected="@(ViewBag.SelectedCategory == "Cybersecurity" ? "true" : "false")">
+                                        <span class="filter-text">CyberSecurity Courses</span>
+                                        <span class="course-number"> 0 @ViewBag.countCyber</span>
+                                    </button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="@(ViewBag.SelectedCategory == "Web Development" ? "active" : "")"
+                                            id="popular-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#popular"
+                                            type="button"
+                                            role="tab"
+                                            aria-controls="popular"
+                                            aria-selected="@(ViewBag.SelectedCategory == "Web Development" ? "true" : "false")">
+                                        <span class="filter-text">Web Courses</span>
+                                        <span class="course-number"> 0 @ViewBag.countweb</span>
+                                    </button>
+                                </li>
+
+                                <li class="nav-item" role="presentation">
+                                    <button class="@(ViewBag.SelectedCategory == "App Development" ? "active" : "")"
+                                            id="trending-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#trending"
+                                            type="button"
+                                            role="tab"
+                                            aria-controls="trending"
+                                            aria-selected="@(ViewBag.SelectedCategory == "App Development" ? "true" : "false")">
+                                        <span class="filter-text">App Courses</span>
+                                        <span class="course-number"> 0 @ViewBag.countapp</span>
+                                    </button>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- End Course Top  -->
+        </div>
+    </div>
+
+    <div class="rbt-section-overlayping-top rbt-section-gapBottom">
+        <div class="container">
+            <!-- Start Card Area -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="tab-content" id="rbt-myTabContent">
+                        <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="all-tab">
+                            <div class="rbt-course-grid-column">
+                                @foreach (var s in Model.Item1)
+                                {
+                                    if (s.IsApproved == "Approved")
+                                    {
+                                        <!-- Start Single Course  -->
+                                        <div class="course-grid-3">
+                                            <div class="rbt-card variation-01 rbt-hover">
+                                                <div class="rbt-card-img">
+                                                    <a asp-action="Course_detailed" asp-controller="Student" asp-route-id="@s.CourseId">
+                                                        <img src="@s.CourseCover" alt="Card image">
+                                                        @* <div class="rbt-badge-3 bg-white"> *@
+                                                        @*     <span>-40%</span> *@
+                                                        @*     <span>Off</span> *@
+                                                        @* </div> *@
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-card-body">
+
+                                                    <h4 class="rbt-card-title">
+                                                        <a asp-action="Course_detailed" asp-controller="Student" asp-route-id="@s.CourseId">
+                                                            @s.Title
+                                                        </a>
+                                                    </h4>
+
+                                                    <ul class="rbt-meta">
+                                                        <li><i class="feather-book"></i>@s.LessonCount Lessons</li>
+                                                        <li><i class="feather-users"></i>@s.EnrolledStudentsCount Students</li>
+                                                    </ul>
+
+                                                    <p class="rbt-card-text">
+                                                        @s.Description
+                                                    </p>
+                                                    <div class="rbt-card-bottom">
+                                                        <div class="rbt-price">
+                                                            <span class="current-price">@s.Price</span>
+                                                            @* <span class="off-price">$120</span> *@
+                                                        </div>
+                                                        <a asp-controller="GuestFlow"
+                                                           asp-action="AddToCart"
+                                                           asp-route-courseId="@s.CourseId"
+                                                           asp-route-returnUrl="@Context.Request.Path">
+                                                            <i class="feather-shopping-cart"></i> Add To Cart
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Course  -->
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="featured" role="tabpanel" aria-labelledby="featured-tab">
+                            <div class="rbt-course-grid-column">
+                                @foreach(var s in Model.Item1){
+                                    @if (s.Category == "Cybersecurity")
+                                    {
+                                        <!-- Start Single Course  -->
+                                        <div class="course-grid-3">
+                                            <div class="rbt-card variation-01 rbt-hover">
+                                                <div class="rbt-card-img">
+                                                    <a asp-action="Course_detailed" asp-controller="Student" asp-route-id="@s.CourseId">
+                                                        <img src="@s.CourseCover" alt="Card image">
+                                                        @* <div class="rbt-badge-3 bg-white"> *@
+                                                        @*     <span>-40%</span> *@
+                                                        @*     <span>Off</span> *@
+                                                        @* </div> *@
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-card-body">
+                                                    <h4 class="rbt-card-title">
+                                                        <a asp-action="Course_detailed" asp-controller="Student">
+                                                            @s.Title
+                                                        </a>
+                                                    </h4>
+                                                    <ul class="rbt-meta">
+                                                        <li><i class="feather-book"></i>@s.LessonCount Lessons</li>
+                                                        <li><i class="feather-users"></i>@s.EnrolledStudentsCount Students</li>
+                                                    </ul>
+                                                    <p class="rbt-card-text">
+                                                        @s.Description
+                                                    </p>
+                                                    <div class="rbt-card-bottom">
+                                                        <div class="rbt-price">
+                                                            <span class="current-price">@s.Price</span>
+                                                        </div>
+                                                        <a asp-controller="GuestFlow"
+                                                           asp-action="AddToCart"
+                                                           asp-route-courseId="@s.CourseId"
+                                                           asp-route-returnUrl="@Context.Request.Path">
+                                                            <i class="feather-shopping-cart"></i> Add To Cart
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Course  -->
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="popular" role="tabpanel" aria-labelledby="popular-tab">
+                            <div class="rbt-course-grid-column">
+                                @foreach (var s in Model.Item1)
+                                {
+                                    @if (s.Category == "Web Development")
+                                    {
+                                        <!-- Start Single Course  -->
+                                        <div class="course-grid-3">
+                                            <div class="rbt-card variation-01 rbt-hover">
+                                                <div class="rbt-card-img">
+                                                    <a asp-action="Course_detailed" asp-controller="Student" asp-route-id="@s.CourseId">
+                                                        <img src="@s.CourseCover" alt="Card image">
+                                                        @* <div class="rbt-badge-3 bg-white"> *@
+                                                        @*     <span>-40%</span> *@
+                                                        @*     <span>Off</span> *@
+                                                        @* </div> *@
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-card-body">
+                                                    <h4 class="rbt-card-title">
+                                                        <a asp-action="Course_detailed" asp-controller="Student">
+                                                            @s.Title
+                                                        </a>
+                                                    </h4>
+                                                    <ul class="rbt-meta">
+                                                        <li><i class="feather-book"></i>@s.LessonCount Lessons</li>
+                                                        <li><i class="feather-users"></i>@s.EnrolledStudentsCount Students</li>
+                                                    </ul>
+                                                    <p class="rbt-card-text">
+                                                        @s.Description
+                                                    </p>
+                                                    <div class="rbt-card-bottom">
+                                                        <div class="rbt-price">
+                                                            <span class="current-price">$60</span>
+                                                            <span class="off-price">$120</span>
+                                                        </div>
+                                                        <a asp-controller="GuestFlow"
+                                                           asp-action="AddToCart"
+                                                           asp-route-courseId="@s.CourseId"
+                                                           asp-route-returnUrl="@Context.Request.Path">
+                                                            <i class="feather-shopping-cart"></i> Add To Cart
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Course  -->
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="trending" role="tabpanel" aria-labelledby="trending-tab">
+                            <div class="rbt-course-grid-column">
+                                @foreach (var s in Model.Item1)
+                                {
+                                    @if (s.Category == "App Development")
+                                    {
+                                        <!-- Start Single Course  -->
+                                        <div class="course-grid-3">
+                                            <div class="rbt-card variation-01 rbt-hover">
+                                                <div class="rbt-card-img">
+                                                    <a asp-action="Course_detailed" asp-controller="Student" asp-route-id="@s.CourseId">
+                                                        <img src="@s.CourseCover" alt="Card image">
+                                                        @* <div class="rbt-badge-3 bg-white"> *@
+                                                        @*     <span>-40%</span> *@
+                                                        @*     <span>Off</span> *@
+                                                        @* </div> *@
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-card-body">
+                                                    <h4 class="rbt-card-title">
+                                                        <a asp-action="Course_detailed" asp-controller="Student" asp-route-id="@s.CourseId">
+                                                            @s.Title
+                                                        </a>
+                                                    </h4>
+                                                    <ul class="rbt-meta">
+                                                        <li><i class="feather-book"></i>@s.LessonCount Lessons</li>
+                                                        <li><i class="feather-users"></i>@s.EnrolledStudentsCount Students</li>
+                                                    </ul>
+                                                    <p class="rbt-card-text">
+                                                        @s.Description
+                                                    </p>
+                                                    <div class="rbt-card-bottom">
+                                                        <div class="rbt-price">
+                                                            <span class="current-price">$60</span>
+                                                            @* <span class="off-price">$120</span> *@
+                                                        </div>
+                                                        <a asp-controller="GuestFlow"
+                                                           asp-action="AddToCart"
+                                                           asp-route-courseId="@s.CourseId"
+                                                           asp-route-returnUrl="@Context.Request.Path">
+                                                            <i class="feather-shopping-cart"></i> Add To Cart
+                                                        </a>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Single Course  -->
+                                    }
+                                }
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="latest" role="tabpanel" aria-labelledby="latest-tab">
+                            <div class="rbt-course-grid-column">
+                                <!-- Start Single Course  -->
+                                <div class="course-grid-3">
+                                    <div class="rbt-card variation-01 rbt-hover">
+                                        <div class="rbt-card-img">
+                                            <a href="course-details-5.html">
+                                                <img src="~/assets/images/course/language-academy-03.jpg" alt="Card image">
+                                                <div class="rbt-badge-3 bg-white">
+                                                    <span>-40%</span>
+                                                    <span>Off</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="rbt-card-body">
+                                            <div class="rbt-card-top">
+                                            <h4 class="rbt-card-title">
+                                                <a href="course-details-5.html">
+                                                    Angular Zero to
+                                                    Mastery
+                                                </a>
+                                            </h4>
+                                            <ul class="rbt-meta">
+                                                <li><i class="feather-book"></i>8 Lessons</li>
+                                                <li><i class="feather-users"></i>30 Students</li>
+                                            </ul>
+                                            <p class="rbt-card-text">
+                                                Angular Js long fact that a reader will be
+                                                distracted by
+                                                the readable.
+                                            </p>
+
+                                            <div class="rbt-author-meta mb--20">
+                                                <div class="rbt-avater">
+                                                    <a href="#">
+                                                        <img src="~/assets/images/client/avatar-03.png" alt="Sophia Jaymes">
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-author-info">
+                                                    By <a href="profile.html">Slaughter</a> In <a href="#">Languages</a>
+                                                </div>
+                                            </div>
+                                            <div class="rbt-card-bottom">
+                                                <div class="rbt-price">
+                                                    <span class="current-price">$80</span>
+                                                    <span class="off-price">$100</span>
+                                                </div>
+                                                <a class="rbt-btn-link" href="course-details-5.html">
+                                                    Learn
+                                                    More<i class="feather-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Course  -->
+                                <!-- Start Single Course  -->
+                                <div class="course-grid-3">
+                                    <div class="rbt-card variation-01 rbt-hover">
+                                        <div class="rbt-card-img">
+                                            <a href="course-details-5.html">
+                                                <img src="~/assets/images/course/language-academy-04.jpg" alt="Card image">
+                                                <div class="rbt-badge-3 bg-white">
+                                                    <span>-40%</span>
+                                                    <span>Off</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="rbt-card-body">
+
+                                            <h4 class="rbt-card-title">
+                                                <a href="course-details-5.html">
+                                                    Web Front To
+                                                    Back
+                                                </a>
+                                            </h4>
+                                            <ul class="rbt-meta">
+                                                <li><i class="feather-book"></i>20 Lessons</li>
+                                                <li><i class="feather-users"></i>40 Students</li>
+                                            </ul>
+                                            <p class="rbt-card-text">
+                                                Web Js long fact that a reader will be distracted
+                                                by
+                                                the readable.
+                                            </p>
+                                            <div class="rbt-author-meta mb--20">
+                                                <div class="rbt-avater">
+                                                    <a href="#">
+                                                        <img src="~/assets/images/client/avater-01.png" alt="Sophia Jaymes">
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-author-info">
+                                                    By <a href="profile.html">Patrick</a> In <a href="#">Languages</a>
+                                                </div>
+                                            </div>
+
+                                            <div class="rbt-card-bottom">
+                                                <div class="rbt-price">
+                                                    <span class="current-price">$60</span>
+                                                    <span class="off-price">$120</span>
+                                                </div>
+                                                <a>
+                                                    Learn
+                                                    More<i class="feather-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Course  -->
+                                <!-- Start Single Course  -->
+                                <div class="course-grid-3">
+                                    <div class="rbt-card variation-01 rbt-hover">
+                                        <div class="rbt-card-img">
+                                            <a href="course-details-5.html">
+                                                <img src="~/assets/images/course/language-academy-05.jpg" alt="Card image">
+                                                <div class="rbt-badge-3 bg-white">
+                                                    <span>-40%</span>
+                                                    <span>Off</span>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div class="rbt-card-body">
+                                            <h4 class="rbt-card-title">
+                                                <a href="course-details-5.html">
+                                                    SQL Beginner
+                                                    Advanced
+                                                </a>
+                                            </h4>
+                                            <ul class="rbt-meta">
+                                                <li><i class="feather-book"></i>12 Lessons</li>
+                                                <li><i class="feather-users"></i>50 Students</li>
+                                            </ul>
+                                            <p class="rbt-card-text">
+                                                It is a long established fact that a reader will be
+                                                distracted
+                                                by the readable.
+                                            </p>
+                                            <div class="rbt-author-meta mb--20">
+                                                <div class="rbt-avater">
+                                                    <a href="#">
+                                                        <img src="~/assets/images/client/avatar-02.png" alt="Sophia Jaymes">
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-author-info">
+                                                    By <a href="profile.html">Angela</a> In <a href="#">Development</a>
+                                                </div>
+                                            </div>
+                                            <div class="rbt-card-bottom">
+                                                <div class="rbt-price">
+                                                    <span class="current-price">$60</span>
+                                                    <span class="off-price">$120</span>
+                                                </div>
+                                                <a class="rbt-btn-link left-icon" href="course-details-5.html">
+                                                    <i class="feather-shopping-cart"></i> Add To Cart
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Course  -->
+                                <!-- Start Single Course  -->
+                                <div class="course-grid-3">
+                                    <div class="rbt-card variation-01 rbt-hover">
+                                        <div class="rbt-card-img">
+                                            <a href="course-details-5.html">
+                                                <img src="~/assets/images/course/language-academy-06.jpg" alt="Card image">
+                                            </a>
+                                        </div>
+                                        <div class="rbt-card-body">
+                                            <h4 class="rbt-card-title">
+                                                <a href="course-details-5.html">
+                                                    JS Zero to
+                                                    Mastery
+                                                </a>
+                                            </h4>
+                                            <ul class="rbt-meta">
+                                                <li><i class="feather-book"></i>8 Lessons</li>
+                                                <li><i class="feather-users"></i>30 Students</li>
+                                            </ul>
+                                            <p class="rbt-card-text">
+                                                Angular Js long fact that a reader will be
+                                                distracted by
+                                                the readable.
+                                            </p>
+
+                                            <div class="rbt-author-meta mb--20">
+                                                <div class="rbt-avater">
+                                                    <a href="#">
+                                                        <img src="~/assets/images/client/avatar-03.png" alt="Sophia Jaymes">
+                                                    </a>
+                                                </div>
+                                                <div class="rbt-author-info">
+                                                    By <a href="profile.html">Slaughter</a> In <a href="#">Languages</a>
+                                                </div>
+                                            </div>
+                                            <div class="rbt-card-bottom">
+                                                <div class="rbt-price">
+                                                    <span class="current-price">$80</span>
+                                                    <span class="off-price">$100</span>
+                                                </div>
+                                                <a class="rbt-btn-link" href="course-details-5.html">
+                                                    Learn
+                                                    More<i class="feather-arrow-right"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single Course  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+</body>

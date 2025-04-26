@@ -1,0 +1,385 @@
+﻿@model Tuple<List<Course>,List<Section>,List<SectionContent>>
+@section Styles{
+    <style>
+        .rbt-btn {
+            padding: 0 70px;
+            background: var(--color-primary);
+            height: 60px;
+            line-height: 60px;
+            color: var(--color-white);
+            font-size: 16px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            transition: all 0.4s ease-in-out;
+            border-radius: 6px;
+            border: 0 none;
+            outline: none;
+            text-decoration: none;
+        }
+    </style>
+}
+
+
+<body>
+
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <!-- Start breadcrumb Area -->
+    <div class="rbt-breadcrumb-default breadcrumb-bg-3 bg_image">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <ul class="page-list">
+                        <li class="rbt-breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li>
+                            <div class="icon-right"><i class="feather-chevron-right"></i></div>
+                        </li>
+                        <li class="rbt-breadcrumb-item active">Web Development</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Breadcrumb Area -->
+    @foreach(var s in Model.Item1){
+        <!-- Start Course Details -->
+        <div class="rbt-course-details-area pb--60 mt--80 mt_md--60 mt_sm--40">
+            <div class="container">
+                <div class="row g-5">
+                    <div class="col-lg-8">
+                        <div class="course-details-content">
+
+
+                            <div class="d-flex align-items-center gap-3 flex-wrap mb--15">
+                                <div class="d-flex flex-column">
+                                    <h6 class="number mb--0 w-600">@s.EnrolledStudentsCount</h6>
+                                    <span class="small-text w-500">Students Enrolled</span>
+                                </div>
+                            </div>
+                            <h2 class="w-600 mb--10">@s.Title</h2>
+                            <hr class="divider">
+                            <div class="d-flex align-items-center mb--20 flex-wrap course-details-feature">
+                                <div class="feature-sin rating">
+                                    <span class="icon">
+                                        <i class="feather-thumbs-up"></i>
+                                    </span>
+                                    <div>
+                                        <span>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                            <a href="#"><i class="fa fa-star"></i></a>
+                                        </span>
+                                        <span class="b3">(8 Reviews)</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="overflow-hidden rbt-card mt--50">
+                                <div class="plyr__video-embed rbtplayer">
+                                    <iframe class="overflow-hidden" src="@s.VideoLink" allowfullscreen allow="autoplay"></iframe>
+                                </div>
+                            </div>
+
+                            <div class="rbt-inner-onepage-navigation sticky-top mt--30">
+                                <nav class="mainmenu-nav onepagenav">
+                                    <ul class="mainmenu">
+                                        <li class="current">
+                                            <a href="#overview">Overview</a>
+                                        </li>
+                                        <li>
+                                            <a href="#coursecontent">Course Content</a>
+                                        </li>
+                                        <li>
+                                            <a href="#details">Details</a>
+                                        </li>
+                                        <li>
+                                            <a href="#intructor">Intructor</a>
+                                        </li>
+                                        <li>
+                                            <a href="#review">Review</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <!-- Start Course Feature Box  -->
+                            <div class="rbt-course-feature-box overview-wrapper rbt-border-with-box mt--30 has-show-more" id="overview">
+                                <div class="rbt-course-feature-inner has-show-more-inner-content">
+                                    <div class="section-title">
+                                        <h4 class="rbt-title-style-3">What you'll learn</h4>
+                                    </div>
+                                    <p>
+                                        @s.Description
+                                    </p>
+                                    <p>
+                                        @s.Description
+                                    </p>
+                                </div>
+                                <div class="rbt-show-more-btn">Show More</div>
+                            </div>
+                            <!-- End Course Feature Box  -->
+
+                            <!-- Start Course Content  -->
+                            <div class="course-content rbt-border-with-box coursecontent-wrapper mt--30" id="coursecontent">
+                                <div class="rbt-course-feature-inner">
+                                    <div class="section-title">
+                                        <h4 class="rbt-title-style-3">Course Content</h4>
+                                    </div>
+                                    <div class="rbt-accordion-style rbt-accordion-02 accordion">
+                                        <div class="accordion" id="accordionExampleb2">
+                                            @foreach (var h in Model.Item2)
+                                            {
+                                                var sectionId = "section" + h.SectionId; // أو استخدم index لو ما في SectionID
+                                                <div class="accordion-item card">
+                                                    <h2 class="accordion-header card-header" id="heading-@sectionId">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapse-@sectionId" aria-expanded="false"
+                                                        aria-controls="collapse-@sectionId">
+                                                            @h.Title
+                                                            <span class="rbt-badge-5 ml--10">1hr 30min</span>
+                                                        </button>
+                                                    </h2>
+                                                    @foreach (var content in Model.Item3.Where(c => c.SectionId == h.SectionId)){
+                                                        <div id="collapse-@sectionId" class="accordion-collapse collapse"
+                                                        aria-labelledby="heading-@sectionId"
+                                                        data-bs-parent="#accordionExampleb2">
+                                                            <div class="accordion-body card-body pr--0">
+                                                                <!-- الدروس أو المحتوى داخل القسم -->
+                                                                <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal"
+                                                                onclick="setVideoUrl('@content.ContentText')">
+                                                                    <div class="course-content-left">
+                                                                        <i class="feather-play-circle"></i> <span class="text">@content.Title</span>
+                                                                    </div>
+                                                                    <div class="course-content-right">
+                                                                        <span class="min-lable">@content.Duration min</span>
+                                                                        <span class="rbt-badge variation-03 bg-primary-opacity">
+                                                                            <i class="feather-eye"></i> Preview
+                                                                        </span>
+                                                                    </div>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Course Content  -->
+                            <!-- Start Course Feature Box  -->
+                            <div class="rbt-course-feature-box rbt-border-with-box details-wrapper mt--30" id="details">
+                                <div class="row g-5">
+                                    <!-- Start Feture Box  -->
+                                    <div class="col-lg-6">
+                                        <div class="section-title">
+                                            <h4 class="rbt-title-style-3 mb--20">Requirements</h4>
+                                        </div>
+                                        @foreach (var j in Model.Item2)
+                                        {
+
+                                            <ul class="rbt-list-style-1">
+                                                @foreach (var content in Model.Item3.Where(c => c.SectionId == j.SectionId))
+                                                {
+                                                    <li>
+                                                        <i class="feather-check"></i>@content.Requirement .
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+                                    <!-- End Feture Box  -->
+                                    <!-- Start Feture Box  -->
+                                    <div class="col-lg-6">
+                                        <div class="section-title">
+                                            <h4 class="rbt-title-style-3 mb--20">Description</h4>
+                                        </div>
+                                        @foreach (var j in Model.Item2)
+                                        {
+
+                                            <ul class="rbt-list-style-1">
+                                                @foreach (var content in Model.Item3.Where(c => c.SectionId == j.SectionId)){
+                                                    <li>
+                                                        <i class="feather-check"></i> @content.Description .
+                                                    </li>
+                                                }
+                                            </ul>
+                                        }
+                                    </div>
+
+                                    <!-- End Feture Box  -->
+                                </div>
+                            </div>
+                            <!-- End Course Feature Box  -->
+                            <!-- Start Intructor Area  -->
+                            <div class="rbt-instructor rbt-border-with-box intructor-wrapper mt--30" id="intructor">
+                                <div class="about-author border-0 pb--0 pt--0">
+                                    <div class="section-title mb--30">
+                                        <h4 class="rbt-title-style-3">Instructor</h4>
+                                    </div>
+                                    <div class="media align-items-center">
+                                        <div class="thumbnail">
+                                            <a href="#">
+                                                <img src="@ViewBag.TeacherP" alt="Author Images">
+                                            </a>
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="author-info">
+                                                <h5 class="title">
+                                                    <a class="hover-flip-item-wrapper" href="author.html">
+                                                        @ViewBag.Teachername
+                                                    </a>
+                                                </h5>
+                                                <ul class="rbt-meta mb--20 mt--10">
+                                                    <li><i class="feather-users"></i>@ViewBag.count_students Students</li>
+                                                    <li><a href="#"><i class="feather-video"></i>@ViewBag.count_teacher_courses Courses</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="content">
+                                                <p class="description">
+                                                    @ViewBag.TeacherBio
+                                                </p>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="sticky-top">
+                            <div class="course-sidebar rbt-shadow-box rbt-gradient-border position-relative">
+                                <div class="inner">
+                                    <div class="content-item-content">
+                                        <div class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
+                                            <div class="rbt-price">
+                                                <h5 class="current-price mb--5">@ViewBag.courseprice</h5>
+                                            </div>
+                                        </div>
+
+
+                                        @if (TempData["enrol"] == "false" && Context.Session.GetInt32("id")==null)
+                                        {
+                                            <div class="add-to-card-button mt--15">
+                                                <a class="rbt-btn btn-gradient" href="/Student/CheckLogin" onclick="checkLoginAndEnroll()">
+                                                    <span class="rbt-btn-wrapper">
+                                                        <span class="btn-text">Enroll Now</span>
+                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        }
+                                        else if (TempData["enrol"] == "false" && Context.Session.GetInt32("id") != null){
+                                            <div class="add-to-card-button mt--15">
+                                                <a asp-action="Checkout" asp-controller="GuestFlow" asp-route-id="@s.CourseId"
+                                                   class="rbt-btn btn-gradient">
+                                                    <span class="rbt-btn-wrapper">
+                                                        <span class="btn-text">Enrolled now</span>
+                                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="add-to-card-button mt--15">
+                                                <div class="add-to-card-button mt--15">
+                                                    <a asp-action="Lesson_intro"  asp-route-id="@s.CourseId"
+                                                       class="rbt-btn btn-gradient">
+                                                        <span class="rbt-btn-wrapper">
+                                                            <span class="btn-text">Start Learning</span>
+                                                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        }
+
+                                        <span class="b3"><i class="feather-calendar"></i> Enrollment validity: Lifetime</span>
+
+
+                                        <div class="rbt-widget-details has-show-more">
+                                            <ul class="has-show-more-inner-content rbt-course-details-list-wrapper">
+                                                <li><span>Enrolled</span><span class="rbt-feature-value rbt-badge-5">@ViewBag.std_count</span></li>
+                                                <li><span>Lectures</span><span class="rbt-feature-value rbt-badge-5">@ViewBag.sectionCount</span></li>
+                                                <li><span>Skill Level</span><span class="rbt-feature-value rbt-badge-5">@ViewBag.LeveL</span></li>
+                                                <li><span>Language</span><span class="rbt-feature-value rbt-badge-5">English</span></li>
+                                            </ul>
+                                            <div class="rbt-show-more-btn">Show More</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Course Details -->
+    }
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+    @section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            function checkLoginAndEnroll() {
+                fetch('/Student/CheckLogin')
+                    .then(response => response.json())
+                    .then(result => {
+                        if (result.loggedIn) {
+                            window.location.href = '/Student/is_erolled';
+                        } else {
+                            Swal.fire({
+                                title: 'You should login first',
+                                html: "<strong>Please login to enroll in this course.</strong>",
+                                icon: 'warning',
+                                confirmButtonText: 'Go to Login',
+                                confirmButtonColor: '#4CAF50',
+                                background: '#fff',
+                                width: '600px', // حجم كبير جدًا
+                                padding: '3em',
+                                customClass: {
+                                    popup: 'custom-swal-popup',
+                                    title: 'custom-swal-title',
+                                    htmlContainer: 'custom-swal-html'
+                                }
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '/GuestFlow/Login';
+                                }
+                            });
+                        }
+                    });
+            }
+        </script>
+
+    }
+
+
+</body>

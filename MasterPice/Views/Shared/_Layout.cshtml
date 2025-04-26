@@ -1,0 +1,429 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MasterPice</title>
+    <link rel="shortcut icon" type="image/x-icon" href="~/assets/images/favicon.png">
+
+    <!-- CSS
+    ============================================ -->
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/slick.css">
+    <link rel="stylesheet" href="~/assets/css/vendor/slick-theme.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/sal.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/feather.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/fontawesome.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/euclid-circulara.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/swiper.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/odometer.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/animation.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/bootstrap-select.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/jquery-ui.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/magnigy-popup.min.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/plyr.css">
+    <link rel="stylesheet" href="~/assets/css/plugins/jodit.min.css">
+
+    <link rel="stylesheet" href="~/assets/css/styles.css">
+    @RenderSection("Styles", required: false)
+    @* <style> *@
+    @*     .cart-count { *@
+    @*         font-size: 12px; *@
+    @*         padding: 2px 6px; *@
+    @*     } *@
+    @* </style> *@
+    <style>
+        .row {
+            --bs-gutter-x: 1.5rem;
+            --bs-gutter-y: 0;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: calc(var(--bs-gutter-y) * -1);
+            margin-right: calc(var(--bs-gutter-x) * -.5);
+            margin-left: calc(var(--bs-gutter-x) * -.5);
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <header class="rbt-header rbt-header-default">
+        <div class="rbt-sticky-placeholder"></div>
+
+        <div class="rbt-header-wrapper  bg-color-white header-sticky">
+            <div class="container">
+                <div class="mainbar-row rbt-navigation-center align-items-center">
+                    <div class="header-left">
+                        <div class="logo logo-dark">
+                            <a href="index.html">
+                                <img src="~/assets/images/logo/logo.png" alt="Education Logo Images">
+                            </a>
+                        </div>
+
+                        <div class="logo d-none logo-light">
+                            <a href="index.html">
+                                <img src="~/assets/images/dark/logo/logo-light.png" alt="Education Logo Images">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="rbt-main-navigation d-none d-xl-block">
+                        <nav class="mainmenu-nav">
+                            <ul class="mainmenu">
+                                <li class="with-megamenu has-menu-child-item position-static">
+                                    <a asp-controller="GuestFlow" asp-action="Home">Home</a>
+                                </li>
+
+                                <li class="with-megamenu has-menu-child-item">
+                                    <a asp-action="Courses" asp-controller="GuestFlow">Courses</a>
+                                </li>
+
+                                <li class="has-dropdown has-menu-child-item">
+                                    <a asp-action="Event" asp-controller="GuestFlow">
+                                        Event
+                                    </a>
+                                </li>
+
+                                <li class="has-dropdown has-menu-child-item">
+                                    <a asp-action="Become_Teacher" asp-controller="GuestFlow">
+                                        Become Teacher
+                                    </a>
+                                </li>
+
+                                <li class="has-dropdown has-menu-child-item">
+                                    <a asp-action="About" asp-controller="GuestFlow">
+                                        About us
+                                    </a>
+                                </li>
+                                <li class="has-dropdown has-menu-child-item">
+                                    <a asp-action="Contact" asp-controller="GuestFlow">
+                                        Contact Us
+                                    </a>
+                                </li>
+                                @if(Context.Session.GetString("name")!=null){
+                                    <li class="has-dropdown has-menu-child-item">
+                                        <a asp-action="Student_dashboard" asp-controller="Student">Dashboard_student</a>
+                                    </li>
+                                    <li class="has-dropdown has-menu-child-item">
+                                        <a asp-action="Logout" asp-controller="GuestFlow">Logout</a>
+                                    </li>
+                                }
+                                @if (Context.Session.GetString("AdminEmail") != null){
+									<li class="has-dropdown has-menu-child-item">
+										<a asp-action="Admin_dashboard" asp-controller="Admin">Dashboard_Admin</a>
+									</li>
+									<li class="has-dropdown has-menu-child-item">
+                                        <a asp-action="Logout">Logout</a>
+									</li>
+                                }
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="header-right d-flex align-items-center gap-3">
+
+                        <!-- ===== Login/Register Buttons ===== -->
+                        <div class="rbt-btn-wrapper d-none d-xl-block" id="authButtons">
+                            @if (Context.Session.GetString("name") == null)
+                            {
+                                @if (Context.Session.GetString("AdminEmail") != null){
+                                    <a asp-action="Admin_dashboard" asp-controller="Admin">@Context.Session.GetString("AdminName")</a>
+                                    <a asp-action="Admin_dashboard" asp-controller="Admin" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="@Context.Session.GetString("AdminProfilePicture")" alt="User" width="40" height="40" class="rounded-circle">
+                                    </a>
+                                }
+                                else{
+                                    <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" asp-controller="GuestFlow" asp-action="Register">
+                                        <span data-text="Join Now">Join Now</span>
+                                    </a>
+                                    <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none ms-2" asp-controller="GuestFlow" asp-action="Login">
+                                        <span data-text="Login">Login</span>
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                <a asp-action="Student_profile" asp-controller="Student">@Context.Session.GetString("name")</a>
+                                <a asp-action="Student_profile" asp-controller="Student" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="@Context.Session.GetString("profile")" alt="User" width="40" height="40" class="rounded-circle">
+                                </a>
+                            }
+                        </div>
+                        <!-- ✅ السلة تكون أول عنصر -->
+                        <div class="cart-icon-wrapper position-relative">
+                            <a asp-action="cart" asp-controller="GuestFlow" class="text-dark position-relative" style="font-size: 24px;">
+                                <i class="feather-shopping-cart"></i>
+                                @* <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill" *@
+                                @*       style="font-size: 12px; padding: 3px 6px;"> *@
+                                @*     @(Context.Session.GetInt32("CartCount") ?? 0) *@
+                                @* </span> *@
+                            </a>
+                        </div>
+                        <!-- Start Mobile-Menu-Bar -->
+                        <div class="mobile-menu-bar d-block d-xl-none">
+                            <div class="hamberger">
+                                <button class="hamberger-button rbt-round-btn">
+                                    <i class="feather-menu"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+    </header>
+    <div class="rbt-offcanvas-menu d-xl-none" id="mobile-menu" style="display: none;">
+        <div class="offcanvas-inner">
+            <div class="rbt-offcanvas-header d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0">Menu</h5>
+                <button id="close-menu" class="btn-close"></button>
+            </div>
+            <ul class="mainmenu">
+                <!-- نفس اللينكات تبعتك من فوق تنسخها هون -->
+                <li><a asp-controller="GuestFlow" asp-action="Home">Home</a></li>
+                <li><a asp-controller="GuestFlow" asp-action="Courses">Courses</a></li>
+                <li><a asp-controller="GuestFlow" asp-action="Event">Event</a></li>
+                <!-- ... والباقي مثل ما هو -->
+                @if (Context.Session.GetString("name") != null)
+                {
+                    <li class="has-dropdown has-menu-child-item">
+                        <a asp-action="Student_dashboard" asp-controller="Student">Dashboard_student</a>
+                    </li>
+                    <li class="has-dropdown has-menu-child-item">
+                        <a asp-action="Logout" asp-controller="GuestFlow">Logout</a>
+                    </li>
+                }
+                @if (Context.Session.GetString("AdminEmail") != null)
+                {
+                    <li class="has-dropdown has-menu-child-item">
+                        <a asp-action="Admin_dashboard" asp-controller="Admin">Dashboard_Admin</a>
+                    </li>
+                    <li class="has-dropdown has-menu-child-item">
+                        <a asp-action="Logout">Logout</a>
+                    </li>
+                }
+                <!-- ===== Login/Register Buttons ===== -->
+                <div class="rbt-btn-wrapper d-none d-xl-block" id="authButtons">
+                    @if (Context.Session.GetString("name") == null)
+                    {
+                        @if (Context.Session.GetString("AdminEmail") != null)
+                        {
+                            <a asp-action="Admin_dashboard" asp-controller="Admin">@Context.Session.GetString("AdminName")</a>
+                            <a asp-action="Admin_dashboard" asp-controller="Admin" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="@Context.Session.GetString("AdminProfilePicture")" alt="User" width="40" height="40" class="rounded-circle">
+                            </a>
+                        }
+                        else
+                        {
+                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" asp-controller="GuestFlow" asp-action="Register">
+                                <span data-text="Join Now">Join Now</span>
+                            </a>
+                            <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none ms-2" asp-controller="GuestFlow" asp-action="Login">
+                                <span data-text="Login">Login</span>
+                            </a>
+                        }
+                    }
+                    else
+                    {
+                        <a asp-action="Student_profile" asp-controller="Student">@Context.Session.GetString("name")</a>
+                        <a asp-action="Student_profile" asp-controller="Student" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="@Context.Session.GetString("profile")" alt="User" width="40" height="40" class="rounded-circle">
+                        </a>
+                    }
+                </div>
+                <!-- ✅ السلة تكون أول عنصر -->
+                <div class="cart-icon-wrapper position-relative">
+                    <a asp-action="cart" asp-controller="GuestFlow" class="text-dark position-relative" style="font-size: 24px;">
+                        <i class="feather-shopping-cart"></i>
+                        @* <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill" *@
+                        @*       style="font-size: 12px; padding: 3px 6px;"> *@
+                        @*     @(Context.Session.GetInt32("CartCount") ?? 0) *@
+                        @* </span> *@
+                    </a>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="rbt-footer footer-style-1">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row row--15 mt_dec--30">
+                    <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
+                        <div class="footer-widget">
+                            <div class="logo logo-dark">
+                                <a href="index.html">
+                                    <img src="assets/images/logo/logo.png" alt="Edu-cause">
+                                </a>
+                            </div>
+                            <div class="logo d-none logo-light">
+                                <a href="index.html">
+                                    <img src="assets/images/dark/logo/logo-light.png" alt="Edu-cause">
+                                </a>
+                            </div>
+
+                            <p class="description mt--20">
+                                We’re always in search for talented
+                                and motivated people. Don’t be shy introduce yourself!
+                            </p>
+
+                            <div class="contact-btn mt--30">
+                                <a class="rbt-btn hover-icon-reverse btn-border-gradient radius-round" asp-action="Contact" asp-controller="GuestFlow">
+                                    <div class="icon-reverse-wrapper">
+                                        <span class="btn-text">Contact With Us</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-6 col-sm-6 col-12 mt--30">
+                        <div class="footer-widget">
+                            <h5 class="ft-title">Our Company</h5>
+                            <ul class="ft-link">
+                                <li>
+                                    <a asp-action="Contact" asp-controller="GuestFlow">Contact Us</a>
+                                </li>
+                                <li>
+                                    <a asp-action="Become_Teacher" asp-controller="GuestFlow">Become Teacher</a>
+                                </li>
+                                <li>
+                                    <a asp-action="Event" asp-controller="GuestFlow">Events</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-12 mt--30">
+                        <div class="footer-widget">
+                            <h5 class="ft-title">Get Contact</h5>
+                            <ul class="ft-link">
+                                <li><span>Phone:</span> <a href="#">+962 776264297</a></li>
+                                <li><span>E-mail:</span> <a href="mailto:hr@example.com">Habeeb.alafeef22@gmailc.com</a></li>
+                                <li><span>Location:</span> Jerash,Jordan</li>
+                            </ul>
+                            <ul class="social-icon social-default icon-naked justify-content-start mt--20">
+                                <li>
+                                    <a href="https://www.facebook.com/habeeb.alafeef.79">
+                                        <i class="feather-facebook"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.linkedin.com/in/habib-alafeef-0054861b8/">
+                                        <i class="feather-linkedin"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer aera -->
+    <div class="rbt-separator-mid">
+        <div class="container">
+            <hr class="rbt-separator m-0">
+        </div>
+    </div>
+
+    <!-- JS
+    ============================================ -->
+    <!-- Modernizer JS -->
+    <script src="~/assets/js/vendor/modernizr.min.js"></script>
+    <!-- jQuery JS -->
+    <script src="~/assets/js/vendor/jquery.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="~/assets/js/vendor/bootstrap.min.js"></script>
+    <!-- sal.js -->
+    <script src="~/assets/js/vendor/sal.js"></script>
+    <!-- Dark Mode Switcher -->
+    <script src="~/assets/js/vendor/js.cookie.js"></script>
+    <script src="~/assets/js/vendor/jquery.style.switcher.js"></script>
+    <script src="~/assets/js/vendor/swiper.js"></script>
+    <script src="~/assets/js/vendor/jquery-appear.js"></script>
+    <script src="~/assets/js/vendor/odometer.js"></script>
+    <script src="~/assets/js/vendor/backtotop.js"></script>
+    <script src="~/assets/js/vendor/isotop.js"></script>
+    <script src="~/assets/js/vendor/imageloaded.js"></script>
+
+    <script src="~/assets/js/vendor/wow.js"></script>
+    <script src="~/assets/js/vendor/waypoint.min.js"></script>
+    <script src="~/assets/js/vendor/easypie.js"></script>
+    <script src="~/assets/js/vendor/text-type.js"></script>
+    <script src="~/assets/js/vendor/jquery-one-page-nav.js"></script>
+    <script src="~/assets/js/vendor/bootstrap-select.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-ui.js"></script>
+    <script src="~/assets/js/vendor/magnify-popup.min.js"></script>
+    <script src="~/assets/js/vendor/paralax-scroll.js"></script>
+    <script src="~/assets/js/vendor/paralax.min.js"></script>
+    <script src="~/assets/js/vendor/countdown.js"></script>
+    <script src="~/assets/js/vendor/plyr.js"></script>
+    <script src="~/assets/js/vendor/jodit.min.js"></script>
+    <script src="~/assets/js/vendor/Sortable.min.js"></script>
+    <!-- Main JS -->
+    <script src="~/assets/js/main.js"></script>
+
+    <!-- ===== Toggle between Auth Buttons and User Dropdown ===== -->
+    <script>
+        // This is just a demo - replace with your actual authentication logic
+        $(document).ready(function() {
+            // Check if user is logged in (you would replace this with your actual check)
+            const isLoggedIn = false; // Change to true to see the avatar
+
+            if (isLoggedIn) {
+                $('#authButtons').addClass('d-none');
+                $('.rbt-user-wrapper').removeClass('d-none');
+            }
+        });
+                // عداد السلة - قابل للتعديل حسب التخزين أو API
+        let cartCount = 0;
+
+        function addToCart(courseId) {
+            cartCount++;
+            document.getElementById('cartCount').innerText = cartCount;
+
+            // تخزين مؤقت داخل sessionStorage
+            let cartItems = JSON.parse(sessionStorage.getItem('cart')) || [];
+            cartItems.push(courseId);
+            sessionStorage.setItem('cart', JSON.stringify(cartItems));
+        }
+
+        // استعادة العدد عند تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            let savedCart = JSON.parse(sessionStorage.getItem('cart')) || [];
+            document.getElementById('cartCount').innerText = savedCart.length;
+        });
+                document.addEventListener("DOMContentLoaded", function () {
+            const menuBtn = document.querySelector(".hamberger-button");
+            const closeBtn = document.getElementById("close-menu");
+            const mobileMenu = document.getElementById("mobile-menu");
+
+            if (menuBtn && mobileMenu) {
+                menuBtn.addEventListener("click", () => {
+                    mobileMenu.style.display = "block";
+                    document.body.style.overflow = "hidden";
+                });
+            }
+
+            if (closeBtn) {
+                closeBtn.addEventListener("click", () => {
+                    mobileMenu.style.display = "none";
+                    document.body.style.overflow = "";
+                });
+            }
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

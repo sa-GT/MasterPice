@@ -1,0 +1,322 @@
+﻿@model List<FeedBack>
+@* @section Styles{ *@
+@*     <style> *@
+@*             .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl { *@
+@*         max-width: 100% !important; *@
+@*         /* padding-right: var(--bs-gutter-x, .75rem); */ *@
+@*         /* padding-left: var(--bs-gutter-x, .75rem); */ *@
+@*         padding:5px; *@
+@*         margin-right: auto; *@
+@*         margin-left: auto; *@
+@*             } *@
+@*     </style> *@
+@* } *@
+    <div id="my_switcher" class="my_switcher">
+        <ul>
+            <li>
+                <a href="javascript: void(0);" data-theme="light" class="setColor light">
+                    <img src="~/assets/images/about/sun-01.svg" alt="Sun images"><span title="Light Mode"> Light</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript: void(0);" data-theme="dark" class="setColor dark">
+                    <img src="~/assets/images/about/vector.svg" alt="Vector Images"><span title="Dark Mode"> Dark</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Start Header Area -->
+
+    <!-- Start Side Vav -->
+    <div class="rbt-cart-side-menu">
+        <div class="inner-wrapper">
+            <div class="inner-top">
+                <div class="content">
+                    <div class="title">
+                        <h4 class="title mb--0">Your shopping cart</h4>
+                    </div>
+                    <div class="rbt-btn-close" id="btn_sideNavClose">
+                        <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
+                    </div>
+                </div>
+            </div>
+            <nav class="side-nav w-100">
+                <ul class="rbt-minicart-wrapper">
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/1.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Miracle Morning</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$22</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/7.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Happy Strong</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$30</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/3.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Rich Dad Poor Dad</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$50</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+
+                    <li class="minicart-item">
+                        <div class="thumbnail">
+                            <a href="#">
+                                <img src="~/assets/images/product/4.jpg" alt="Product Images">
+                            </a>
+                        </div>
+                        <div class="product-content">
+                            <h6 class="title"><a href="single-product.html">Momentum Theorem</a></h6>
+
+                            <span class="quantity">1 * <span class="price">$50</span></span>
+                        </div>
+                        <div class="close-btn">
+                            <button class="rbt-round-btn"><i class="feather-x"></i></button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="rbt-minicart-footer">
+                <hr class="mb--0">
+                <div class="rbt-cart-subttotal">
+                    <p class="subtotal"><strong>Subtotal:</strong></p>
+                    <p class="price">$121</p>
+                </div>
+                <hr class="mb--0">
+                <div class="rbt-minicart-bottom mt--20">
+                    <div class="view-cart-btn">
+                        <a class="rbt-btn btn-border icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">View Cart</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                    <div class="checkout-btn mt--20">
+                        <a class="rbt-btn btn-gradient icon-hover w-100 text-center" href="#">
+                            <span class="btn-text">Checkout</span>
+                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Side Vav -->
+    <a class="close_side_menu" href="javascript:void(0);"></a>
+
+    <!-- Start Banner Area  -->
+    <div class="slider-area rbt-banner-10 height-750 bg_image bg_image--11" data-black-overlay="5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner text-center">
+                        <div class="section-title mb--20">
+                            <span class="subtitle bg-coral-opacity">How We Work</span>
+                        </div>
+                        <h1 class="title display-one text-white">Take Challenge for Build Your Life. <br>The World Most
+                            Lessons for Back to Your Life.</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Banner Area  -->
+
+    <!-- Start About Area  -->
+    <div class="rbt-about-area about-style-1 bg-color-white rbt-section-gapTop">
+        <div class="container">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <div class="thumbnail-wrapper">
+                        <div class="thumbnail image-1">
+                            <img data-parallax='{"x": 0, "y": -20}' src="~/assets/images/about/about-07.jpg" alt="Education Images">
+                        </div>
+                        <div class="thumbnail image-2 d-none d-xl-block">
+                            <img data-parallax='{"x": 0, "y": 60}' src="~/assets/images/about/about-09.jpg" alt="Education Images">
+                        </div>
+                        <div class="thumbnail image-3 d-none d-md-block">
+                            <img data-parallax='{"x": 0, "y": 80}' src="~/assets/images/about/about-08.jpg" alt="Education Images">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="inner pl--50 pl_sm--0 pl_md--0">
+                        <div class="section-title text-start">
+                            <span class="subtitle bg-coral-opacity">Know About Us</span>
+                            <h2 class="title">Know About EDSpark <br /> Learning Platform</h2>
+                        </div>
+                    <p class="description mt--30">Explore a world of knowledge with EDSpark — where every course brings you closer to your dreams.</p>
+                        <!-- Start Feature List  -->
+                        <div class="rbt-feature-wrapper mt--40">
+
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-pink-opacity">
+                                    <i class="feather-heart"></i>
+                                </div>
+                                <div class="feature-content">
+                                <h6 class="feature-title">
+                                     Rich Learning Materials
+                                </h6>
+                                <p class="feature-description">
+                                    Access videos, documents, quizzes, and hands-on exercises to deepen your understanding.
+                                </p>
+                                </div>
+                            </div>
+
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-primary-opacity">
+                                    <i class="feather-book"></i>
+                                </div>
+                                <div class="feature-content">
+                                <h6 class="feature-title">Supportive Community</h6>
+                                <p class="feature-description">
+                                    Join an interactive community of learners and instructors to share knowledge and experiences.
+                                </p>
+                                </div>
+                            </div>
+
+                            <div class="rbt-feature feature-style-1">
+                                <div class="icon bg-coral-opacity">
+                                    <i class="feather-monitor"></i>
+                                </div>
+                                <div class="feature-content">
+                                <h6 class="feature-title">Recognized Credentials</h6>
+                                <p class="feature-description">
+                                    Get official credentials that validate your learning and skills in the job market.
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End About Area  -->
+
+    <!-- Start Button Area  -->
+<div class="rbt-video-area rbt-section-gapBottom pt--50 bg-color-white">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 order-2 order-lg-1">
+                <div class="inner pr--50">
+                    <div class="section-title text-start">
+                        <span class="subtitle bg-primary-opacity">How We Work</span>
+                        <h2 class="title">Build your Career And Upgrade Your Life</h2>
+                        <p class="description mt--30">
+                            Unlock your full potential with our carefully designed courses. Whether you're just starting out or looking to grow, EDSpark provides you with the tools, skills, and support to transform your passion into a professional journey.
+                            Learn at your pace, earn recognized certifications, and take your future into your own hands.
+                        </p>
+                        <div class="read-more-btn">
+                            <a class="rbt-moderbt-btn" href="#">
+                                <span class="moderbt-btn-text">Learn More About Us</span>
+                                <i class="feather-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order-1 order-lg-2">
+                <div class="video-popup-wrapper">
+                    <img class="w-100 rbt-radius" src="~/assets/images/others/video-01.jpg" alt="Video Images">
+                    <a class="popup-video position-to-top" href="https://www.youtube.com/watch?v=nA1Aqp0sPQo">
+                        <span><img src="assets/images/icons/youtube.png" alt=""></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="rbt-testimonial-area bg-color-white pb--80 overflow-hidden">
+        <div class="container-fluid">
+            <div class="row g-5 align-items-center">
+                <div class="col-xl-3">
+                    <div class="section-title pl--100 pl_sm--30">
+                        <span class="subtitle bg-pink-opacity">Learners Feedback</span>
+                        <h2 class="title">What Our Learners Say</h2>
+                        <p class="description mt--20">Learning communicate to global world and build a bright future
+                            with our histudy.</p>
+                        <div class="veiw-more-btn mt--20">
+                            <a class="rbt-btn btn-gradient rbt-marquee-btn marquee-text-y" asp-action="Contact" asp-controller="GuestFlow">
+                                <span data-text="Contact Us">Contact Us</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9">
+                    <div class="overflow-hidden">
+                        <div class="scroll-animation-wrapper pt--50 pb--30">
+                            <div class="scroll-animation scroll-right-left">
+                                @foreach(var s in Model){
+                                                                    <!-- Start Single Testimonial  -->
+                                <div class="single-column-20">
+                                    <div class="rbt-testimonial-box">
+                                        <div class="inner">
+                                            <div class="description">
+                                                <p class="subtitle-3">@s.FeedbackContent</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                }
+                                <!-- End Single Testimonial  -->
+                            </div>
+                        </div>
+                        <div class="scroll-animation-wrapper pb--50">
+                            <div class="scroll-animation scroll-left-right">
+
+                                <!-- Start Single Testimonial  -->
+                            @foreach (var s in Model)
+                            {
+                                <!-- Start Single Testimonial  -->
+                                <div class="single-column-20">
+                                    <div class="rbt-testimonial-box">
+                                        <div class="inner">
+                                            <div class="description">
+                                                <p class="subtitle-3">@s.FeedbackContent</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                                <!-- End Single Testimonial  -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
