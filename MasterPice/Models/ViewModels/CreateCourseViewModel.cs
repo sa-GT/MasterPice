@@ -9,5 +9,6 @@
 		public List<SectionContent>? ExistingSectionContents { get; set; }
 		public List<Course>? AllCourses { get; set; }
 		public List<Course> ExistingCourses { get; set; } = new();
+
 	}
 }

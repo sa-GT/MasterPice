@@ -111,7 +111,7 @@
 
                                             <nav class="mainmenu-nav">
                                                 <ul class="dashboard-mainmenu rbt-default-sidebar-list">
-                                                    <li><a asp-action="Student_settings" asp-controller="Student"><i class="feather-settings"></i><span>Settings</span></a></li>
+                                                    @* <li><a asp-action="Student_settings" asp-controller="Student"><i class="feather-settings"></i><span>Settings</span></a></li> *@
                                                     <li><a asp-action="Logout" asp-controller="Admin"><i class="feather-log-out"></i><span>Logout</span></a></li>
                                                 </ul>
                                             </nav>
@@ -148,27 +148,27 @@
                                     </div>
 
                                     <div class="tab-content">
-                                        <div class="tab-pane fade active show" id="home-4" role="tabpanel" aria-labelledby="home-tab-4">
-                                            <div class="row g-5">
-                                                <!-- Start Single Course  -->
-                                                @foreach (var s in Model)
-                                                {
-                                                    <div class="col-lg-4 col-md-6 col-12">
-                                                        <div class="rbt-card variation-01 rbt-hover">
-                                                            <div class="rbt-card-img">
-                                                                <a>
-                                                                    <img src="@s.ProfilePicture" alt="Card image">
-                                                                </a>
-                                                            </div>
-                                                            <div class="rbt-card-body">
-                                                                <h4 class="rbt-card-title">
-                                                                    <a>@s.FullName</a>
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                }
-                                                <!-- End Single Course  -->
+                                        <div class="row gy-5">
+                                            <div class="col-lg-12">
+                                                <div class="rbt-dashboard-table table-responsive">
+                                                    <table class="rbt-table table table-borderless">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>UserName Name</th>
+                                                                <th>Email</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            @foreach (var s in Model)
+                                                            {
+                                                                <tr>
+                                                                    <td>@s.FullName</td>
+                                                                    <td>@s.Email</td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
 

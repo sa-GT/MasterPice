@@ -54,13 +54,13 @@
                 <div class="mainbar-row rbt-navigation-center align-items-center">
                     <div class="header-left">
                         <div class="logo logo-dark">
-                            <a href="index.html">
-                                <img src="~/assets/images/logo/logo.png" alt="Education Logo Images">
+                            <a asp-action="Home" asp-controller="GuestFlow">
+                                <img src="~/assets/images/logo/Navy.png"EdSpark Logo" style="width: 152.44px; height: 49.99px; alt="Education Logo Images">
                             </a>
                         </div>
 
                         <div class="logo d-none logo-light">
-                            <a href="index.html">
+                            <a asp-action ="Home" asp-controller="GuestFlow">
                                 <img src="~/assets/images/dark/logo/logo-light.png" alt="Education Logo Images">
                             </a>
                         </div>
@@ -76,11 +76,11 @@
                                     <a asp-action="Courses" asp-controller="GuestFlow">Courses</a>
                                 </li>
 
-                                <li class="has-dropdown has-menu-child-item">
-                                    <a asp-action="Event" asp-controller="GuestFlow">
-                                        Event
-                                    </a>
-                                </li>
+                                @* <li class="has-dropdown has-menu-child-item"> *@
+                                @*     <a asp-action="Event" asp-controller="GuestFlow"> *@
+                                @*         Event *@
+                                @*     </a> *@
+                                @* </li> *@
 
                                 <li class="has-dropdown has-menu-child-item">
                                     <a asp-action="Become_Teacher" asp-controller="GuestFlow">
@@ -180,11 +180,49 @@
                 <h5 class="mb-0">Menu</h5>
                 <button id="close-menu" class="btn-close"></button>
             </div>
-            <ul class="mainmenu">
-                <!-- نفس اللينكات تبعتك من فوق تنسخها هون -->
-                <li><a asp-controller="GuestFlow" asp-action="Home">Home</a></li>
-                <li><a asp-controller="GuestFlow" asp-action="Courses">Courses</a></li>
-                <li><a asp-controller="GuestFlow" asp-action="Event">Event</a></li>
+            <ul class="mainmenu" style="list-style:none;">
+                <li class="with-megamenu has-menu-child-item position-static">
+                    <a asp-controller="GuestFlow" asp-action="Home">Home</a>
+                </li>
+
+                <li class="with-megamenu has-menu-child-item">
+                    <a asp-action="Courses" asp-controller="GuestFlow">Courses</a>
+                </li>
+
+                @* <li class="has-dropdown has-menu-child-item"> *@
+                @*     <a asp-action="Event" asp-controller="GuestFlow"> *@
+                @*         Event *@
+                @*     </a> *@
+                @* </li> *@
+
+                <li class="has-dropdown has-menu-child-item">
+                    <a asp-action="Become_Teacher" asp-controller="GuestFlow">
+                        Become Teacher
+                    </a>
+                </li>
+
+                <li class="has-dropdown has-menu-child-item">
+                    <a asp-action="About" asp-controller="GuestFlow">
+                        About us
+                    </a>
+                </li>
+                <li class="has-dropdown has-menu-child-item">
+                    <a asp-action="Contact" asp-controller="GuestFlow">
+                        Contact Us
+                    </a>
+                </li>
+                @if (Context.Session.GetString("name") == null && Context.Session.GetString("AdminEmail") == null){
+                    <li>
+                        <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none" asp-controller="GuestFlow" asp-action="Register">
+                            <span data-text="Join Now">Join Now</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="rbt-btn rbt-switch-btn btn-gradient btn-sm hover-transform-none ms-2" asp-controller="GuestFlow" asp-action="Login">
+                            <span data-text="Login">Login</span>
+                        </a>
+                    </li>
+                }
                 <!-- ... والباقي مثل ما هو -->
                 @if (Context.Session.GetString("name") != null)
                 {
@@ -202,6 +240,11 @@
                     </li>
                     <li class="has-dropdown has-menu-child-item">
                         <a asp-action="Logout">Logout</a>
+                    </li>
+                    <li>
+                        <a asp-action="Admin_dashboard" asp-controller="Admin" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="@Context.Session.GetString("AdminProfilePicture")" alt="User" width="40" height="40" class="rounded-circle">
+                        </a>
                     </li>
                 }
                 <!-- ===== Login/Register Buttons ===== -->
@@ -233,16 +276,6 @@
                         </a>
                     }
                 </div>
-                <!-- ✅ السلة تكون أول عنصر -->
-                <div class="cart-icon-wrapper position-relative">
-                    <a asp-action="cart" asp-controller="GuestFlow" class="text-dark position-relative" style="font-size: 24px;">
-                        <i class="feather-shopping-cart"></i>
-                        @* <span id="cartCount" class="badge bg-danger position-absolute top-0 start-100 translate-middle rounded-pill" *@
-                        @*       style="font-size: 12px; padding: 3px 6px;"> *@
-                        @*     @(Context.Session.GetInt32("CartCount") ?? 0) *@
-                        @* </span> *@
-                    </a>
-                </div>
             </ul>
         </div>
     </div>
@@ -260,13 +293,13 @@
                     <div class="col-lg-4 col-md-6 col-sm-6 col-12 mt--30">
                         <div class="footer-widget">
                             <div class="logo logo-dark">
-                                <a href="index.html">
-                                    <img src="assets/images/logo/logo.png" alt="Edu-cause">
+                                <a asp-action="Home" asp-controller="GuestFlow">
+                                    <img src="/assets/images/logo/Navy.png" alt="Edu-cause">
                                 </a>
                             </div>
                             <div class="logo d-none logo-light">
-                                <a href="index.html">
-                                    <img src="assets/images/dark/logo/logo-light.png" alt="Edu-cause">
+                                <a asp-action="Home" asp-controller="GuestFlow">
+                                    <img src="/assets/images/logo/Navy.png" alt="Edu-cause">
                                 </a>
                             </div>
 
@@ -330,15 +363,6 @@
             </div>
         </div>
     </footer>
-    <!-- End Footer aera -->
-    <div class="rbt-separator-mid">
-        <div class="container">
-            <hr class="rbt-separator m-0">
-        </div>
-    </div>
-
-    <!-- JS
-    ============================================ -->
     <!-- Modernizer JS -->
     <script src="~/assets/js/vendor/modernizr.min.js"></script>
     <!-- jQuery JS -->

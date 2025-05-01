@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Payment Successful";
+}
+@section Styles {
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <style>
+
+        .thank-you-container {
+            text-align: center;
+        }
+
+        .thank-you-card {
+            background: white;
+            padding: 60px 30px;
+            border-radius: 20px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 40px auto;
+        }
+
+            .thank-you-card h1 {
+                color: #007bff;
+                margin-bottom: 20px;
+                font-size: 32px;
+            }
+
+            .thank-you-card p {
+                color: #555;
+                margin-bottom: 30px;
+                font-size: 18px;
+            }
+
+        .btn {
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            background-size: 300% 100%;
+            background-image: linear-gradient(to right, var(--color-primary), var(--color-secondary), var(--color-secondary), var(--color-primary));
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+            }
+    </style>
+}
+    <div class="thank-you-container">
+        <div class="thank-you-card">
+            <h1>🎉 Thank You!</h1>
+            <p>Your payment was successful. We appreciate your trust.</p>
+            <a href="@Url.Action("Home", "GuestFlow")" class="btn">Back to Home</a>
+        </div>
+    </div>

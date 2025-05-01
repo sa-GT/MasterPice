@@ -3,6 +3,11 @@ using MasterPice.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NuGet.DependencyResolver;
+//using System.Net.Mail;
+using MimeKit;
+using MailKit.Net.Smtp;
+using System.Text;
+using ContentDisposition = MimeKit.ContentDisposition;
 
 namespace MasterPice.Controllers
 {
@@ -347,14 +352,11 @@ namespace MasterPice.Controllers
 				.Where(c => c.CartId == cart.CartId)
 				.Select(c => c.CourseId)
 				.ToList();
-
 			var courses = _context.Courses
 				.Where(c => courseIds.Contains(c.CourseId))
 				.ToList();
-
 			if (courses.Count == 0)
 				return BadRequest("Cart is empty");
-
 			payment.CartId = cart.CartId;
 			payment.StudentId = userId.Value;
 			payment.IsPayed = true;
@@ -405,7 +407,7 @@ namespace MasterPice.Controllers
 			_context.SaveChanges();
 
 			TempData["suuceesPay"] = "You Are Payed Successfully";
-			return RedirectToAction("Home");
+			return RedirectToAction("PaymentResult");
 		}
 
 
@@ -494,6 +496,75 @@ namespace MasterPice.Controllers
 			}
 			return RedirectToAction("Cart");
 		}
+
+		public IActionResult PaymentResult()
+		{
+			return View();
+		}
+
+		public IActionResult ForgetPassword()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult ForgetPassword(string Email)
+		{
+			try
+			{
+				var EmailFrom = "sajatest255@gmail.com";
+				var EmailPassword = "ywas oije plbx yikk"; // App Password
+
+				// جلب الطالب حسب الإيميل
+				var student = _context.Students.FirstOrDefault(s => s.Email == Email);
+
+				if (student == null)
+				{
+					ModelState.AddModelError("Email", "This email is not registered.");
+					return View();
+				}
+
+				// توليد كلمة مرور جديدة (4 أرقام)
+				Random random = new Random();
+				string newPassword = random.Next(1000, 9999).ToString();
+
+				// تحديث كلمة السر مباشرة (بدون تشفير)
+				student.PasswordHash = newPassword;
+				_context.SaveChanges();
+
+				// إعداد الإيميل
+				var email = new MimeMessage();
+				email.From.Add(MailboxAddress.Parse(EmailFrom));
+				email.To.Add(MailboxAddress.Parse(student.Email));
+				email.Subject = "Your New Password";
+
+				email.Body = new TextPart("plain")
+				{
+					Text = $"Your new temporary password is: {newPassword}\n\nPlease log in and change it as soon as possible."
+				};
+
+				// إرسال الإيميل
+				using var smtp = new SmtpClient();
+
+				// تجاوز مشكلة الشهادة أثناء التطوير فقط
+				smtp.ServerCertificateValidationCallback = (s, c, h, e) => true;
+
+				smtp.Connect("smtp.gmail.com", 587, MailKit.Security.SecureSocketOptions.StartTls);
+				smtp.Authenticate(EmailFrom, EmailPassword);
+				smtp.Send(email);
+				smtp.Disconnect(true);
+
+				TempData["Success"] = "A new password has been sent to your email.";
+				return RedirectToAction("Login", "GuestFlow");
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine("EMAIL ERROR: " + ex.ToString());
+				TempData["Error"] = "Something went wrong, please try again.";
+				return View();
+			}
+		}
+
 
 
 	}

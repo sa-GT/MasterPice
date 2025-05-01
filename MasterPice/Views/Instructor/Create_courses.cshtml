@@ -232,34 +232,19 @@
 
                                                     <div class="course-field mb--20">
                                                         <h6>Course Thumbnail</h6>
-                                                        <div class="rbt-create-course-thumbnail upload-area">
-                                                            <div class="upload-area">
-                                                                <div class="brows-file-wrapper" data-black-overlay="9">
-                                                                    <!-- actual upload which is hidden -->
-                                                                    <input type="type" name="name" value="id" hidden />
-                                                                    <input asp-for="Course.CourseCover" id="createinputfile" type="file" class="inputfile" />
-                                                                    <img id="createfileImage" src="~/assets/images/others/thumbnail-placeholder.svg" alt="file image">
-                                                                    <!-- our custom upload button -->
-                                                                    <label class="d-flex" for="createinputfile" title="No File Choosen">
-                                                                        <i class="feather-upload"></i>
-                                                                        <span class="text-center">Choose a File</span>
-                                                                    </label>
-                                                                </div>
-                                                            </div>
+                                                        <div class="course-field mb--15">
+                                                            <input id="regularPrice-1" asp-for="Course.CourseCover" type="text" placeholder="Photo fit with constrains">
+                                                            <!-- our custom upload button -->
+                                                            <label class="d-flex" for="createinputfile" title="No File Choosen">
+                                                                <i class="feather-upload"></i>
+                                                                <span class="text-center">Choose Photo Fit With Instructions</span>
+                                                            </label>
                                                         </div>
-
-                                                        <small>
-                                                            <i class="feather-info"></i> <b>Size:</b> 355x200 pixels,
-                                                            <b>
-                                                                File
-                                                                Support:
-                                                            </b> JPG, JPEG, PNG, GIF, WEBP
-                                                        </small>
                                                     </div>
                                                     <div class="content">
                                                             <button type="submit" class="rbt-btn btn-gradient hover-icon-reverse">
                                                                 <span class="icon-reverse-wrapper">
-                                                                    <span class="btn-text">Create Lesson</span>
+                                                                    <span class="btn-text">Create Courses</span>
                                                                     <span class="btn-icon"><i class="feather-plus-circle"></i></span>
                                                                     <span class="btn-icon"><i class="feather-plus-circle"></i></span>
                                                                 </span>
@@ -415,7 +400,7 @@
                                             <div class="content">
                                                     <button type="submit" class="rbt-btn btn-gradient hover-icon-reverse">
                                                         <span class="icon-reverse-wrapper">
-                                                            <span class="btn-text">Create Lesson</span>
+                                                            <span class="btn-text">Add New Topic</span>
                                                             <span class="btn-icon"><i class="feather-plus-circle"></i></span>
                                                             <span class="btn-icon"><i class="feather-plus-circle"></i></span>
                                                         </span>

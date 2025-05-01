@@ -88,17 +88,26 @@
                     <div class="tab-content advance-tab-content-style-2">
                         <div class="tab-pane fade" id="home-4" role="tabpanel" aria-labelledby="home-tab-4">
                             <div class="content">
-                                <p>Educational technology ipsum dolor sit amet consectetur, adipisicing elit. Tempora sequi doloremque dicta quia unde odio nam minus reiciendis ullam aliquam, dolorum ab quisquam cum numquam nemo iure cumque iste. Accusamus necessitatibus.</p>
+                                <p>
+                                    Empower learners worldwide by sharing your expertise.
+                                    Join our growing community of instructors and inspire the next generation. Whether you’re passionate about education, technology, or arts, you have the ability to change lives. Becoming an instructor allows you to build your brand, reach global students, and earn rewards for your knowledge.
+                                </p>
                             </div>
                         </div>
                         <div class="tab-pane fade active show" id="profile-4" role="tabpanel" aria-labelledby="profile-tab-4">
                             <div class="content">
-                                <p>Physical education ipsum dolor sit amet consectetur, adipisicing elit. Tempora sequi doloremque dicta quia unde odio nam minus reiciendis ullam aliquam, dolorum ab quisquam cum numquam nemo iure cumque iste. Accusamus necessitatibus.</p>
+                                <p>
+                                    Maintain a professional and respectful learning environment.
+                                    Ensure your content is original, accurate, and valuable to learners. Communicate clearly, provide constructive feedback, and respect students' diverse backgrounds. Follow our community guidelines to foster a positive, supportive atmosphere where all learners can thrive
+                                </p>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="contact-4" role="tabpanel" aria-labelledby="contact-tab-4">
                             <div class="content">
-                                <p>Experiencing music ipsum dolor sit amet consectetur, adipisicing elit. Tempora sequi doloremque dicta quia unde odio nam minus reiciendis ullam aliquam, dolorum ab quisquam cum numquam nemo iure cumque iste. Accusamus necessitatibus.</p>
+                                <p>
+                                    Your journey begins with your first course.
+                                    Start by identifying your area of expertise and structuring your course into easy-to-follow modules. Focus on creating engaging, high-quality lessons that resonate with your audience. Every great instructor was once a beginner — take the first step and build a course you’re proud of.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -191,7 +200,7 @@
                             }
                             <div class="col-lg-12">
                                 <div class="form-submit-group">
-                                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
+                                    <button type="submit" id="submitBtn" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
                                         <span class="icon-reverse-wrapper">
                                             <span class="btn-text">Become a Instructor</span>
                                             <span class="btn-icon"><i class="feather-arrow-right"></i></span>
@@ -199,7 +208,6 @@
                                         </span>
                                     </button>
                                 </div>
-                                @TempData["Success"]
                             </div>
                         </form>
                     </div>
@@ -208,10 +216,29 @@
             </div>
         </div>
     </div>
+	@section Scripts {
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const submitBtn = document.getElementById('submitBtn');
+                const form = submitBtn.closest('form');
 
-    <div class="rbt-separator-mid">
-        <div class="container">
-            <hr class="rbt-separator m-0">
-        </div>
-    </div>
+                submitBtn.addEventListener('click', function (e) {
+                    e.preventDefault(); // ❌ وقف الإرسال الافتراضي (مهم جداً)
+
+                    Swal.fire({
+                        title: 'Request Send successfully',
+                        text: 'Your application sent successfully',
+                        icon: 'success',
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: 'Okay'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit(); // ✅ إرسال الفورم يدويًا بعد الضغط على موافق
+                        }
+                    });
+                });
+            });
+        </script>
+	}
 </body>
