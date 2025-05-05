@@ -327,7 +327,18 @@ namespace MasterPice.Controllers
 
 			return View(); 
 		}
-
+		public IActionResult ShowAllInstructorsCourses()
+		{
+			var studentid = HttpContext.Session.GetInt32("id");
+			var find_student = _context.Students.FirstOrDefault(s => s.StudentId == studentid);
+			var isTeacher = _context.Teachers.Where(s => s.Email == find_student.Email);
+			if (isTeacher != null)
+			{
+				var courses = _context.Courses.Where(s => s.TeacherId == isTeacher.FirstOrDefault().TeacherId).ToList();
+				return View(courses);
+			}
+			return View();
+		}
 		public IActionResult Student_wishlist()
 		{
 			return View();

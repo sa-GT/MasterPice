@@ -181,6 +181,9 @@
                                                     <li><a asp-action="Student_dashboard" asp-controller="Student" class="feather-home"></i><span>Dashboard</span></a></li>
                                                     <li><a asp-action="Student_profile"><i class="feather-user"></i><span>My Profile</span></a></li>
                                                     <li><a asp-action="Student_enrolled_courses" asp-controller="Student"><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
+                                                    @if (Context.Session.GetString("isTeacher") == "yes"){
+                                                        <li><a asp-action="Student_enrolled_courses" asp-controller="Student"><i class="fa-solid fa-folder"></i><span>Show Instructor courses</span></a></li>
+                                                    }
                                                     @* <li><a href="student-wishlist.html"><i class="feather-bookmark"></i><span>Wishlist</span></a></li> *@
                                                     @* <li><a href="student-reviews.html"><i class="feather-star"></i><span>Reviews</span></a></li> *@
                                                     @* <li><a href="student-my-quiz-attempts.html"><i class="feather-help-circle"></i><span>My Quiz Attempts</span></a></li> *@
@@ -272,14 +275,14 @@
                                     @* </div> *@
                                     <!-- End Profile Row  -->
                                     <!-- Start Profile Row  -->
-                                    <div class="rbt-profile-row row row--15 mt--15">
-                                        <div class="col-lg-4 col-md-4">
-                                            <div class="rbt-profile-content b2">Skill/Occupation</div>
-                                        </div>
-                                        <div class="col-lg-8 col-md-8">
-                                            <div class="rbt-profile-content b2">@Context.Session.GetString("interests")</div>
-                                        </div>
-                                    </div>
+                                    @* <div class="rbt-profile-row row row--15 mt--15"> *@
+                                    @*     <div class="col-lg-4 col-md-4"> *@
+                                    @*         <div class="rbt-profile-content b2">Skill/Occupation</div> *@
+                                    @*     </div> *@
+                                    @*     <div class="col-lg-8 col-md-8"> *@
+                                    @*         <div class="rbt-profile-content b2">@Context.Session.GetString("interests")</div> *@
+                                    @*     </div> *@
+                                    @* </div> *@
                                     <!-- End Profile Row  -->
                                     <!-- Start Profile Row  -->
                                     <!-- End Profile Row  -->

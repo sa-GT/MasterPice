@@ -140,7 +140,7 @@
                                                 <ul class="dashboard-mainmenu rbt-default-sidebar-list">
                                                     <li><a asp-action="Student_dashboard" asp-controller="Student" class="feather-home"></i><span>Dashboard</span></a></li>
                                                     <li><a asp-action="Student_profile"><i class="feather-user"></i><span>My Profile</span></a></li>
-                                                    <li><a asp-action="Student_enrolled_courses" asp-controller="Student"><i class="feather-book-open"></i><span>Enrolled Courses</span></a></li>
+                                                    <li><a asp-action="Student_enrolled_courses" asp-controller="Student"><i class="feather-book-open"></i><span>Instructor Courses</span></a></li>
                                                     @if (Context.Session.GetString("isTeacher") == "yes")
                                                     {
                                                         <li><a asp-action="ShowAllInstructorsCourses" asp-controller="Student"><i class="fa-solid fa-folder"></i><span>Show Instructor courses</span></a></li>
@@ -176,7 +176,7 @@
                                 <div class="content">
 
                                     <div class="section-title">
-                                        <h4 class="rbt-title-style-3">Enrolled Courses</h4>
+                                        <h4 class="rbt-title-style-3">Instractor Courses</h4>
                                     </div>
 
                                     <div class="advance-tab-button mb--30">
@@ -213,21 +213,6 @@
                                                                 </a>
                                                             </div>
                                                             <div class="rbt-card-body">
-                                                                <div class="rbt-card-top">
-                                                                    <div class="rbt-review">
-                                                                        <div class="rating">
-                                                                            <i class="fas fa-star"></i>
-                                                                            <i class="fas fa-star"></i>
-                                                                            <i class="fas fa-star"></i>
-                                                                            <i class="fas fa-star"></i>
-                                                                            <i class="fas fa-star"></i>
-                                                                        </div>
-                                                                        <span class="rating-count"> (15 Reviews)</span>
-                                                                    </div>
-                                                                    <div class="rbt-bookmark-btn">
-                                                                        <a class="rbt-round-btn" title="Bookmark" href="#"><i class="feather-bookmark"></i></a>
-                                                                    </div>
-                                                                </div>
                                                                 <h4 class="rbt-card-title">
                                                                     <a asp-action="Course_detailed" asp-route-id="@s.CourseId">@s.Title</a>
                                                                 </h4>
@@ -399,8 +384,10 @@
 
                                         <div class="tab-pane fade" id="contact-4" role="tabpanel" aria-labelledby="contact-tab-4">
                                             <div class="row g-5">
-                                                @if (Context.Session.GetInt32("isCompleted")!=null){
-                                                    @foreach(var s in Model){
+                                                @if (Context.Session.GetInt32("isCompleted") != null)
+                                                {
+                                                    @foreach (var s in Model)
+                                                    {
                                                         <!-- Start Single Course  -->
                                                         <div class="col-lg-4 col-md-6 col-12">
                                                             <div class="rbt-card variation-01 rbt-hover">

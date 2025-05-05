@@ -102,6 +102,34 @@ namespace MasterPice.Controllers
 		public IActionResult DeleteInstructor(int id)
 		{
 			var instructor = _context.Teachers.Find(id);
+
+			var findinstudent = _context.Students.FirstOrDefault(i => i.Email == instructor.Email);
+
+			var findcourses = _context.Courses.Where(c => c.TeacherId == instructor.TeacherId).ToList();
+
+			var section = _context.Sections.Where(s => s.CourseId == findcourses.FirstOrDefault().CourseId).ToList();
+
+			if (section != null)
+			{
+				var sectionContents = _context.SectionContents
+					.Where(sc => sc.SectionId.HasValue && section.Select(s => s.SectionId).Contains(sc.SectionId.Value))
+					.ToList();
+				if (sectionContents.Any())
+					_context.SectionContents.RemoveRange(sectionContents);
+				_context.Sections.RemoveRange(section);
+			}
+			var sectionconent = _context.SectionContents.Where(sc => sc.SectionId == section.FirstOrDefault().SectionId);
+			if (sectionconent != null)
+			{
+				_context.SectionContents.RemoveRange(sectionconent);
+			}
+			if (findcourses != null)
+			{
+				_context.Courses.RemoveRange(findcourses);
+			}
+
+			findinstudent.IsTeaching = "no";
+			
 			if (instructor == null)
 				return NotFound();
 			_context.Teachers.Remove(instructor);
